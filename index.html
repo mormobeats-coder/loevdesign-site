@@ -76,8 +76,22 @@
       color: var(--text) !important;
     }
     
+    /* Force hero elements to be visible on mobile */
+    @media (max-width: 768px) {
+      .hero .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .hero .reveal--hero {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+    
   </style>
-  <link rel="stylesheet" href="./assets/css/styles.css?v=50" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=51" />
   <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <link rel="shortcut icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <!-- Yandex.Metrika counter -->
@@ -900,11 +914,31 @@
         });
       }
       
-      // Check immediately for hero elements
+      // Force hero elements to be visible immediately on mobile
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        const heroReveals = document.querySelectorAll('.hero .reveal');
+        heroReveals.forEach(el => {
+          el.classList.add('in');
+        });
+      }
+      
+      // Check immediately for all elements
       setTimeout(checkReveal, 100);
       
       // Check on scroll
       window.addEventListener('scroll', checkReveal);
+      
+      // Check on resize
+      window.addEventListener('resize', function() {
+        const isMobileNow = window.innerWidth <= 768;
+        if (isMobileNow) {
+          const heroReveals = document.querySelectorAll('.hero .reveal');
+          heroReveals.forEach(el => {
+            el.classList.add('in');
+          });
+        }
+      });
     });
   </script>
   
