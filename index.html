@@ -25,14 +25,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Loev Design — графический дизайнер" />
   <meta property="og:description" content="Брендинг, коммуникационный дизайн, сайт‑лендинг, упаковка. Минимализм, мягкие фиолетовые акценты и свежие анимации." />
-  <meta property="og:image" content="./assets/img/cases/rockot/1.png" />
-  <meta property="og:image:alt" content="Loev Design — примеры работ: Rockot rebranding" />
+  <meta property="og:image" content="https://loevdesign.ru/assets/img/logo.svg" />
   <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="800" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Loev Design — графический дизайнер" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Loev Design — графический дизайнер" />
   <meta name="twitter:description" content="Брендинг, коммуникационный дизайн, сайт‑лендинг, упаковка." />
-  <meta name="twitter:image" content="./assets/img/cases/rockot/1.png" />
+  <meta name="twitter:image" content="https://loevdesign.ru/assets/img/logo.svg" />
   <meta property="og:site_name" content="Loev Design" />
   <meta property="og:locale" content="ru_RU" />
   
@@ -44,7 +44,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"></noscript>
   <style>
     /* Force dark theme immediately */
@@ -70,8 +71,56 @@
     .hero .display, .hero .lead, .section h2, .section h3, .case h3, .case p {
       color: var(--text) !important;
     }
+    
+    /* Critical CSS for hero section mobile visibility */
+    .hero {
+      position: relative !important;
+      overflow: hidden !important;
+      min-height: 400px !important;
+      display: block !important;
+      visibility: visible !important;
+    }
+    .hero-inner {
+      position: relative !important;
+      padding: 80px 0 50px !important;
+      z-index: 2 !important;
+      display: block !important;
+    }
+    .hero-content {
+      max-width: 100% !important;
+      position: relative !important;
+      z-index: 10 !important;
+      display: block !important;
+    }
+    .display {
+      font-family: "Space Grotesk", Inter, system-ui !important;
+      font-size: clamp(24px, 6vw, 40px) !important;
+      line-height: 1.08 !important;
+      margin: 10px 0 16px !important;
+      color: var(--text) !important;
+      display: block !important;
+    }
+    .lead {
+      font-size: clamp(14px, 3vw, 16px) !important;
+      color: var(--muted) !important;
+      max-width: 100% !important;
+      display: block !important;
+    }
+    .cta {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+      margin: 20px 0 !important;
+    }
+    @media (min-width: 600px) {
+      .hero-inner { padding: 120px 0 72px !important; }
+      .hero-content { max-width: 680px !important; }
+      .display { font-size: clamp(28px, 4.6vw, 60px) !important; }
+      .lead { font-size: clamp(16px, 1.4vw, 18px) !important; }
+      .cta { flex-direction: row !important; gap: 12px !important; margin: 26px 0 !important; }
+    }
   </style>
-  <link rel="stylesheet" href="./assets/css/styles.css?v=49" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=50" />
   <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <link rel="shortcut icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <!-- Yandex.Metrika counter -->
