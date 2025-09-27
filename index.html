@@ -88,10 +88,63 @@
         transform: none !important;
         transition: none !important;
       }
+      
+      /* Force section titles to be visible on mobile */
+      .section-title.reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+    
+    /* Fix benefits container background - override main CSS */
+    .benefits-flow-faq-container {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    
+    .benefits-flow-faq-container::before {
+      display: none !important;
+    }
+    
+    .benefits-container {
+      background: transparent !important;
+      margin-bottom: 0 !important;
+    }
+    
+    .section--alt {
+      background: transparent !important;
+    }
+    
+    .section--alt::before {
+      display: none !important;
+    }
+    
+    .section--alt::after {
+      display: none !important;
+    }
+    
+    /* Remove any background from benefits section */
+    #benefits-flow-faq {
+      background: transparent !important;
+    }
+    
+    #benefits-flow-faq::before {
+      display: none !important;
+    }
+    
+    #benefits-flow-faq::after {
+      display: none !important;
+    }
+    
+    /* Ensure cards have proper background */
+    .benefit-item {
+      background: var(--card) !important;
     }
     
   </style>
-  <link rel="stylesheet" href="./assets/css/styles.css?v=51" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=54" />
   <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <link rel="shortcut icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <!-- Yandex.Metrika counter -->
@@ -914,11 +967,16 @@
         });
       }
       
-      // Force hero elements to be visible immediately on mobile
+      // Force hero elements and section titles to be visible immediately on mobile
       const isMobile = window.innerWidth <= 768;
       if (isMobile) {
         const heroReveals = document.querySelectorAll('.hero .reveal');
         heroReveals.forEach(el => {
+          el.classList.add('in');
+        });
+        
+        const sectionTitles = document.querySelectorAll('.section-title.reveal');
+        sectionTitles.forEach(el => {
           el.classList.add('in');
         });
       }
@@ -935,6 +993,11 @@
         if (isMobileNow) {
           const heroReveals = document.querySelectorAll('.hero .reveal');
           heroReveals.forEach(el => {
+            el.classList.add('in');
+          });
+          
+          const sectionTitles = document.querySelectorAll('.section-title.reveal');
+          sectionTitles.forEach(el => {
             el.classList.add('in');
           });
         }
