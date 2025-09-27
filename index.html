@@ -148,11 +148,25 @@
       background: var(--card) !important;
     }
     
+    /* Mobile specific fixes for reviews section - move content higher */
+    @media (max-width: 480px) {
+      .reviews-container {
+        padding-top: 0 !important;
+        padding-bottom: 40px !important;
+      }
+      .reviews-content {
+        margin-top: -40px !important;
+      }
+      .reviews-content .btn {
+        margin-bottom: 40px !important;
+      }
+    }
+    
   </style>
   
   <!-- Load main CSS asynchronously to prevent render blocking -->
-  <link rel="preload" href="./assets/css/styles.css?v=55" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="./assets/css/styles.css?v=55"></noscript>
+  <link rel="preload" href="./assets/css/styles.css?v=72" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./assets/css/styles.css?v=72"></noscript>
   
   <!-- Fallback for browsers that don't support preload -->
   <script>
@@ -160,7 +174,7 @@
     if (!('relList' in document.createElement('link'))) {
       var link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = './assets/css/styles.css?v=55';
+      link.href = './assets/css/styles.css?v=72';
       document.head.appendChild(link);
     }
   </script>
