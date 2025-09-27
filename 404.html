@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Страница не найдена — Loev Design</title>
+  <meta name="description" content="Ошибка 404 — страница не найдена" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <script>document.documentElement.setAttribute('data-theme','dark')</script>
+  <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
+  <style>
+    html,body{ background: var(--bg); color: var(--text) }
+    .e404{ min-height: 70vh; display:grid; place-items:center; padding-top:110px }
+    .e404-box{ text-align:center; border:1px solid var(--line); border-radius:16px; padding:24px; background:var(--card); max-width:640px }
+    .e404-title{ font-size:2rem; margin:0 0 8px }
+    .e404-lead{ color:var(--muted); margin:0 0 16px }
+    .e404-actions{ display:flex; gap:12px; justify-content:center }
+    @media (max-width:700px){ .e404-actions{ flex-direction:column } .e404-actions .btn{ width:100% } }
+  </style>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104072618', 'ym');
+
+    ym(104072618, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/104072618" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="./index.html#top" aria-label="Loev Design">
+        <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="64" height="64" />
+        <span>Loev Design</span>
+      </a>
+      <nav class="nav" role="navigation" aria-label="Основная навигация">
+        <a href="./index.html#services">Цены и услуги</a>
+        <a href="./index.html#cases">Портфолио</a>
+        <a href="./index.html#about">Обо мне</a>
+      </nav>
+      <a href="./index.html#contact" class="btn btn--primary" data-open-contact>Связаться</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="menu-toggle-label">Меню</span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-overlay"></div>
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <a class="logo" href="./index.html#top" aria-label="Loev Design">
+          <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="60" height="60" />
+          <span>Loev Design</span>
+        </a>
+        <button class="mobile-nav-close" aria-label="Закрыть">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a class="mobile-nav-link" href="./index.html#services">Цены и услуги</a>
+        <a class="mobile-nav-link" href="./index.html#cases">Портфолио</a>
+        <a class="mobile-nav-link" href="./index.html#about">Обо мне</a>
+        <a class="mobile-nav-link" href="./index.html#contact">Контакты</a>
+        <a class="mobile-nav-link mobile-nav-cta btn btn--primary" href="./index.html#contact">Оставить заявку</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" class="e404">
+    <div class="e404-box">
+      <h1 class="e404-title">404 — Страница не найдена</h1>
+      <p class="e404-lead">Похоже, вы перешли по неверной ссылке. Вернитесь на главную или свяжитесь со мной.</p>
+      <div class="e404-actions">
+        <a class="btn btn--primary" href="./index.html">На главную</a>
+        <a class="btn btn--ghost" href="mailto:loevstudio@gmail.com">Написать на email</a>
+      </div>
+    </div>
+  </main>
+  <script src="./assets/js/main.js?v=14"></script>
+  <script>
+    // GitHub Pages fallback: /page -> /page.html
+    (function(){
+      try{
+        var path = location.pathname;
+        // ignore if already has extension or is root
+        if(/\.[a-z0-9]+$/i.test(path) || path === '/' ) return;
+        // try to fetch same path with .html
+        var htmlUrl = path.replace(/\/$/, '') + '.html' + location.search + location.hash;
+        fetch(htmlUrl, { method:'HEAD', mode:'no-cors' }).then(function(){
+          // redirect optimistically (HEAD no-cors can't confirm 200 reliably)
+          location.replace(htmlUrl);
+        }).catch(function(){ /* stay on 404 */ });
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
+
+

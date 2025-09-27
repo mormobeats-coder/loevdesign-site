@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loevdesign.ru/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://loevdesign.ru/sitemap.xml
+

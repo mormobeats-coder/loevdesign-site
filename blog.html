@@ -1,0 +1,420 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+      else document.documentElement.setAttribute('data-theme', 'light');
+    } catch(e){
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Блог — Loev Design</title>
+  <meta name="description" content="Практика веб‑дизайна: психология цвета, типографика, адаптивность и UX." />
+  <meta name="theme-color" content="#2563eb" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Блог — Loev Design" />
+  <meta property="og:description" content="Практика веб‑дизайна: психология цвета, типографика, адаптивность и UX." />
+  <meta property="og:image" content="./assets/img/cases/rockot/1.png" />
+  <meta property="og:image:alt" content="Loev Design — примеры работ: Rockot rebranding" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Блог — Loev Design" />
+  <meta name="twitter:description" content="Практика веб‑дизайна: психология цвета, типографика, адаптивность и UX." />
+  <meta name="twitter:image" content="./assets/img/cases/rockot/1.png" />
+  <meta property="og:site_name" content="Loev Design" />
+  <meta property="og:locale" content="ru_RU" />
+  
+  <link rel="apple-touch-icon" href="./For site/01_logo/icons logo.svg" />
+  <link rel="manifest" href="./assets/manifest.webmanifest" crossorigin="use-credentials" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/styles.css?v=29" />
+  <link rel="stylesheet" href="./assets/css/blog.css" />
+  <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(12345678, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true,
+         webvisor:true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/12345678" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <!-- Page-specific minimal styles (layout only) -->
+  <style>
+    /* Ensure consistent CSS variables */
+    :root {
+      --bg: #0b0b0e;
+      --text: #f5f7fb;
+      --muted: #a8b0be;
+      --line: #202534;
+      --card: #11131b;
+      --accent: #2563eb;
+      --accent-2: #1d4ed8;
+    }
+    
+    .featured{ padding: 24px 0 12px; border-bottom:1px solid var(--line); }
+    .featured-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; }
+    @media (max-width: 980px){ .featured-grid{ grid-template-columns:repeat(2, 1fr); } }
+
+    .filters{ display:flex; flex-wrap:wrap; gap:8px; margin: 16px 0 6px; }
+    .filters .chip{ cursor:pointer; user-select:none; }
+    .filters .chip.is-active{ border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 30%, transparent); }
+
+    .blog-section{ padding: 18px 0 48px; }
+    .post-card[hidden]{ display:none !important; }
+    /* Improved cards without image overlays */
+    .post-card{ display:flex; flex-direction:column }
+    .post-cover{ border-bottom:1px solid var(--line) }
+    .post-cover::after{ content: none !important }
+    .post-cover img{ width:100%; height:100%; object-fit:cover; border-radius:12px 12px 0 0; border:1px solid var(--line); border-bottom:none; transition:transform .2s ease }
+    .post-card:hover .post-cover img{ transform: none }
+    .post-body{ display:grid; gap:6px; padding:12px 12px 10px !important }
+    .post-kicker{ margin:0 0 4px !important }
+    .post-title{ margin:0 0 6px !important; font-size:17px }
+    .post-excerpt{ margin:0 0 8px !important }
+    .post-meta{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; color:var(--muted); font-size:12px }
+    .post-meta .reads{ display:inline-flex; align-items:center; gap:6px }
+    .post-meta .reads svg{ width:16px; height:16px }
+    .post-tags{ margin-top:6px !important; gap:8px }
+    .post-tag{ padding:6px 10px !important; font-size:12px !important }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="./index.html#top" aria-label="Loev Design">
+        <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="72" height="72" />
+      </a>
+      <nav class="nav" role="navigation" aria-label="Основная навигация">
+        <a href="./index.html#services">Цены и услуги</a>
+        <a href="./index.html#cases">Портфолио</a>
+        <a href="./index.html#about">Обо мне</a>
+        <a href="blog.html">Блог</a>
+      </nav>
+      <a href="./index.html#contact" class="btn btn--primary" data-open-contact>Связаться</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="menu-toggle-label">Меню</span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-overlay"></div>
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <a class="logo" href="./index.html#top" aria-label="Loev Design">
+          <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="68" height="68" />
+        </a>
+        <button class="mobile-nav-close" aria-label="Закрыть">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a class="mobile-nav-link" href="./index.html#services">Цены и услуги</a>
+        <a class="mobile-nav-link" href="./index.html#cases">Портфолио</a>
+        <a class="mobile-nav-link" href="./index.html#about">Обо мне</a>
+        <a class="mobile-nav-link" href="blog.html">Блог</a>
+        <a class="mobile-nav-link" href="./index.html#contact">Контакты</a>
+        <a class="mobile-nav-link mobile-nav-cta btn btn--primary" href="./index.html#contact">Оставить заявку</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="blog-hero">
+      <div class="container">
+        <h1 class="blog-title">Блог о дизайне</h1>
+        <p class="blog-sub">Практичные разборы: цвет, типографика, UX и адаптивность — без воды.</p>
+
+        <!-- Featured: одна большая + две компактные -->
+        <div class="featured">
+          <div class="featured-grid">
+            <article class="post-card" data-cat="теория,карьера" data-article-id="designers-classification">
+              <a href="./blog-classification.html" class="post-link" aria-label="Классификация графических дизайнеров">
+                <div class="post-cover">
+                  <img src="./For site/04_blog_post/Обложки статей/Classification.png" alt="Классификация графических дизайнеров" loading="lazy" decoding="async">
+                </div>
+              </a>
+              <div class="post-body">
+                <div class="post-kicker">Теория</div>
+                <h3 class="post-title">Классификация графических дизайнеров</h3>
+                <div class="post-meta"><span class="post-date">24 сентября 2025</span><span class="dot"></span><span class="read-time">10–15 мин</span></div>
+              </div>
+            </article>
+            <article class="post-card" data-cat="теория,лидерство" data-article-id="papa-brenda">
+              <a href="./blog-papa-brenda.html" class="post-link" aria-label="Кто такой папа бренда">
+                <div class="post-cover">
+                  <img src="./For site/04_blog_post/Обложки статей/папа бренда.png" alt="Кто такой папа бренда" loading="lazy" decoding="async">
+                </div>
+              </a>
+              <div class="post-body">
+                <div class="post-kicker">Теория</div>
+                <h3 class="post-title">Кто такой папа бренда</h3>
+                <div class="post-meta"><span class="post-date">15 сентября 2025</span><span class="dot"></span><span class="read-time">6–8 мин</span></div>
+              </div>
+            </article>
+            <article class="post-card" data-cat="теория,цвет" data-article-id="color-psychology">
+              <a href="./blog-post.html" class="post-link" aria-label="Психология цвета в дизайне">
+                <div class="post-cover">
+                  <img src="./For site/04_blog_post/Обложки статей/Психология цвета в дизайне.png" alt="Психология цвета в дизайне" loading="lazy" decoding="async">
+                </div>
+              </a>
+              <div class="post-body">
+                <div class="post-kicker">Теория</div>
+                <h3 class="post-title">Психология цвета в дизайне</h3>
+                <div class="post-meta"><span class="post-date">15 марта 2024</span><span class="dot"></span><span class="read-time">8–10 мин</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Category filters -->
+        <div class="filters" id="filters" aria-label="Фильтры по категориям">
+          <button class="chip is-active" data-filter="all" type="button">Все</button>
+          <button class="chip" data-filter="теория" type="button">Теория</button>
+          <button class="chip" data-filter="цвет" type="button">Цвет</button>
+          <button class="chip" data-filter="лидерство" type="button">Лидерство</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="blog-section">
+      <div class="container">
+        <div class="blog-grid" id="blogGrid">
+
+          <article class="post-card" data-cat="теория,лидерство" data-article-id="papa-brenda-grid">
+            <a href="./blog-papa-brenda.html" class="post-link" aria-label="Кто такой папа бренда">
+              <div class="post-cover">
+                <img src="./For site/04_blog_post/Обложки статей/папа бренда.png" alt="Обложка статьи: папа бренда" loading="lazy" decoding="async">
+        </div>
+            </a>
+            <div class="post-body">
+              <div class="post-kicker">Теория</div>
+              <h3 class="post-title">Кто такой папа бренда</h3>
+              <p class="post-excerpt">Лидер, формирующий ДНК бренда: ценности и коммуникация.</p>
+              <div class="post-meta"><span class="post-date">15 сентября 2025</span><span class="dot"></span><span class="read-time">6–8 мин</span><span class="dot"></span><span class="reads"><svg viewBox="0 0 24 24" fill="none"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7zm11-4a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" stroke="currentColor" stroke-width="2"/></svg><span class="reads-count" data-article-id="papa-brenda-grid">0</span></span></div>
+              <div class="post-tags"><span class="post-tag">Лидерство</span><span class="post-tag">Брендинг</span></div>
+      </div>
+          </article>
+
+          <article class="post-card" data-cat="теория,цвет" data-article-id="color-trigger">
+            <a href="./blog-post.html" class="post-link" aria-label="Психология цвета — подробный разбор">
+              <div class="post-cover">
+                <img src="./For site/04_blog_post/Обложки статей/Психология цвета в дизайне.png" alt="Психология цвета — подробный разбор" loading="lazy" decoding="async">
+        </div>
+            </a>
+            <div class="post-body">
+              <div class="post-kicker">Теория</div>
+              <h3 class="post-title">Цвет как триггер внимания</h3>
+              <p class="post-excerpt">От примитивов восприятия — к интерфейсам.</p>
+              <div class="post-meta"><span class="post-date">13 февраля 2024</span><span class="dot"></span><span class="read-time">8–10 мин</span><span class="dot"></span><span class="reads"><svg viewBox="0 0 24 24" fill="none"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7zm11-4a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" stroke="currentColor" stroke-width="2"/></svg><span class="reads-count" data-article-id="color-trigger">0</span></span></div>
+              <div class="post-tags"><span class="post-tag">Цвет</span><span class="post-tag">Психология</span></div>
+      </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta-band reveal">
+        <div class="footer-cta-text">
+          <h3>Готовы обсудить проект?</h3>
+          <p>Расскажите о задаче — предложу варианты и сроки уже сегодня</p>
+        </div>
+        <div class="footer-cta-actions">
+          <a href="./index.html#contact" class="btn btn--primary" data-open-contact>Оставить заявку</a>
+          <a href="mailto:loevstudio@gmail.com" class="btn btn--ghost">Написать на email</a>
+        </div>
+      </div>
+
+      <div class="footer-inner">
+        <div class="footer-left">
+          <a class="logo" href="./index.html#top">
+            <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="28" height="28" />
+          </a>
+          <p>© 2025 Loev Design. Все права защищены.</p>
+        </div>
+        <div class="footer-right">
+          <a href="mailto:loevstudio@gmail.com">loevstudio@gmail.com</a>
+          <a href="tel:+79952247076">+7 995 224‑70‑76</a>
+          <a href="./index.html#services">Услуги</a>
+          <a href="./index.html#cases">Портфолио</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./assets/js/main.js?v=14"></script>
+  <!-- Contact Modal -->
+  <div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="contact-modal-overlay"></div>
+    <div class="contact-modal-content">
+      <button class="contact-modal-close" aria-label="Закрыть">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="contact-modal-header">
+        <h2 class="contact-modal-title" id="contact-modal-title">Связаться со мной</h2>
+        <p class="contact-modal-subtitle">Выберите удобный способ связи</p>
+      </div>
+      <div class="contact-modal-links">
+        <a href="https://t.me/Loev_design" target="_blank" rel="noopener" class="contact-link" data-analytics="contact_telegram">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Telegram</span>
+          <span class="contact-link-detail">@Loev_design</span>
+        </a>
+        <a href="tel:+79952247076" class="contact-link" data-analytics="contact_phone">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Телефон</span>
+          <span class="contact-link-detail">+7 995 224-70-76</span>
+        </a>
+        <a href="mailto:loevstudio@gmail.com" class="contact-link" data-analytics="contact_email">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Email</span>
+          <span class="contact-link-detail">loevstudio@gmail.com</span>
+        </a>
+        <a href="https://wa.me/79952247076" target="_blank" rel="noopener" class="contact-link" data-analytics="contact_whatsapp">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M20 3H4a1 1 0 00-1 1v16l4-4h13a1 1 0 001-1V4a1 1 0 00-1-1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>WhatsApp</span>
+          <span class="contact-link-detail">+7 995 224-70-76</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Category filtering
+    const filterButtons = document.querySelectorAll('.filters .chip');
+    const postCards = document.querySelectorAll('.post-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('is-active'));
+        button.classList.add('is-active');
+        
+        // Filter posts
+        postCards.forEach(card => {
+          const categories = card.getAttribute('data-cat').split(',');
+          if (filter === 'all' || categories.includes(filter)) {
+            card.removeAttribute('hidden');
+          } else {
+            card.setAttribute('hidden', '');
+          }
+        });
+      });
+    });
+
+    // Article read tracking
+    class ArticleReadTracker {
+      constructor() {
+        this.storageKey = 'articleReads';
+        this.reads = this.loadReads();
+      }
+
+      loadReads() {
+        try {
+          const stored = localStorage.getItem(this.storageKey);
+          return stored ? JSON.parse(stored) : {};
+        } catch (e) {
+          return {};
+        }
+      }
+
+      saveReads() {
+        try {
+          localStorage.setItem(this.storageKey, JSON.stringify(this.reads));
+        } catch (e) {
+          console.warn('Could not save article reads');
+        }
+      }
+
+      trackRead(articleId) {
+        this.reads[articleId] = (this.reads[articleId] || 0) + 1;
+        this.saveReads();
+      }
+
+      getReads(articleId) {
+        return this.reads[articleId] || 0;
+      }
+    }
+
+    // Initialize tracker
+    const tracker = new ArticleReadTracker();
+
+    // Render reads on load
+    document.querySelectorAll('.reads-count[data-article-id]').forEach(node => {
+      const id = node.getAttribute('data-article-id');
+      node.textContent = tracker.getReads(id);
+    });
+
+    // Track clicks on article links and update counters
+    document.querySelectorAll('.post-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const card = link.closest('.post-card');
+        const id = card.getAttribute('data-article-id') || (card.getAttribute('data-cat')||'').split(',')[0];
+        if(!id) return;
+        tracker.trackRead(id);
+        const counter = document.querySelector(`.reads-count[data-article-id="${id}"]`);
+        if(counter){ counter.textContent = tracker.getReads(id); }
+      });
+    });
+  </script>
+  <script>
+    // Configure Directus here (replace with your instance) — guarded if SDK not loaded
+    try {
+      if (window.DirectusCMS && typeof DirectusCMS.setConfig === 'function') {
+        DirectusCMS.setConfig({
+          baseURL: '', // e.g. 'https://cms.example.ru'
+          staticToken: '' // optional read-only token
+        });
+      }
+    } catch(e) { /* no-op */ }
+  </script>
+  <script src="./assets/js/blog-directus.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    window.EMAILJS_PUBLIC_KEY = '89Z-FiQ04aTC83nvf';
+    window.EMAILJS_SERVICE_ID = 'service_6ikbggq';
+    window.EMAILJS_TEMPLATE_ID = 'template_fks8i41';
+  </script>
+</body>
+</html>

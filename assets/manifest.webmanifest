@@ -1,0 +1,14 @@
+{
+  "name": "Loev Design — графический дизайнер",
+  "short_name": "Loev",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b0b0e",
+  "theme_color": "#8a5cf6",
+  "lang": "ru",
+  "icons": [
+    { "src": "./img/favicon.svg?v=18", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
+

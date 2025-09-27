@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b7bff"/>
+      <stop offset="1" stop-color="#6a4bd9"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="url(#g)"/>
+  <!-- Centered site logo via nested SVG for perfect alignment -->
+  <svg x="-11" y="-11" width="86" height="86" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
+    <g fill="#ffffff">
+      <polygon points="1159.35,105.83 1159.35,259.59 1026.72,345.39 901.59,426.34 770.51,511.16 770.51,673.73 633.97,762.06 633.97,445.7 770.51,357.37 901.59,272.58 1026.72,191.63"/>
+      <polygon points="901.59,588.94 901.59,833.3 770.51,918.12 770.51,673.73"/>
+      <polygon points="1286.03,340.27 1286.03,496.38 1159.35,578.31 1159.35,827.94 1026.72,913.74 1026.72,508 1159.35,422.2"/>
+    </g>
+  </svg>
+  <title>favicon</title>
+  <desc>Generated from site logo</desc>
+</svg>
+

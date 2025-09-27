@@ -1,0 +1,15 @@
+/* Header Container */
+.site-header {
+  /* Стили теперь в styles.css */
+}
+
+.header-inner {
+  width: 100%;
+  padding: 0;
+  min-height: 0;
+}
+
+/* Оставляю только мобильное меню и контакты */
+.header-contact, .header-contact-item, .header-social, .header-social-link, .mobile-nav, .mobile-nav-header, .mobile-nav-panel, .mobile-nav-close, .mobile-nav-links, .mobile-nav-link, .mobile-nav-cta, .mobile-contact, .mobile-contact-item {
+  /* Стили для мобильного меню и контактов */
+}

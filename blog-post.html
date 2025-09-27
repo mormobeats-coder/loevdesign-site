@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+      else document.documentElement.setAttribute('data-theme', 'light');
+    } catch(e){
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Психология цвета в дизайне: играем на чувствах зрителя — Loev Design</title>
+  <meta name="description" content="Как оттенки влияют на эмоции и решения, и как собрать работающую палитру. Практическое руководство по психологии цвета в дизайне." />
+  <meta name="theme-color" content="#2563eb" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Психология цвета в дизайне: играем на чувствах зрителя — Loev Design" />
+  <meta property="og:description" content="Как оттенки влияют на эмоции и решения, и как собрать работающую палитру. Практическое руководство по психологии цвета в дизайне." />
+  <meta property="og:image" content="./assets/img/cases/rockot/1.png" />
+  <meta property="og:image:alt" content="Loev Design — примеры работ: Rockot rebranding" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Психология цвета в дизайне: играем на чувствах зрителя — Loev Design" />
+  <meta name="twitter:description" content="Как оттенки влияют на эмоции и решения, и как собрать работающую палитру." />
+  <meta name="twitter:image" content="./assets/img/cases/rockot/1.png" />
+  <meta property="og:site_name" content="Loev Design" />
+  <meta property="og:locale" content="ru_RU" />
+  
+  <link rel="apple-touch-icon" href="./For site/01_logo/icons logo.svg" />
+  <link rel="manifest" href="./assets/manifest.webmanifest" crossorigin="use-credentials" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/styles.css?v=29" />
+  <link rel="stylesheet" href="./assets/css/blog.css" />
+  <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104072618', 'ym');
+
+    ym(104072618, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/104072618" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+  <style>
+    .article-layout { display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
+    .article-content { max-width: none; }
+    .article-sidebar { position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; }
+    .article-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+    .article-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; font-size: 14px; color: var(--muted); }
+    .article-category { background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+    .article-title { font-size: 2.5rem; line-height: 1.2; margin: 0 0 20px; color: var(--text); }
+    .article-lead { font-size: 1.2rem; line-height: 1.6; color: var(--muted); margin: 0; }
+    .article-section { margin-bottom: 48px; }
+    .article-section h2 { font-size: 1.8rem; margin: 0 0 24px; color: var(--text); }
+    .article-section h3 { font-size: 1.4rem; margin: 32px 0 16px; color: var(--text); }
+    .article-section p { margin: 0 0 20px; line-height: 1.7; color: var(--muted); }
+    .article-section ul, .article-section ol { margin: 20px 0; padding-left: 24px; }
+    .article-section li { margin: 8px 0; line-height: 1.6; color: var(--muted); }
+    .article-image { width: 100%; height: auto; border-radius: 12px; margin: 32px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    .article-image-caption { text-align: center; font-size: 14px; color: var(--muted); margin-top: 8px; }
+    .color-example { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+    .color-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; text-align: center; }
+    .color-swatch { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 12px; border: 2px solid var(--line); }
+    .color-name { font-weight: 600; margin-bottom: 8px; color: var(--text); }
+    .color-description { font-size: 14px; color: var(--muted); line-height: 1.4; }
+    .reading-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: var(--line); z-index: 1000; }
+    .reading-progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.1s ease; }
+    .toc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+    .toc h3 { margin: 0 0 16px; font-size: 1.1rem; color: var(--text); }
+    .toc ul { list-style: none; padding: 0; margin: 0; }
+    .toc li { margin: 0; }
+    .toc a { display: block; padding: 8px 12px; margin: 2px 0; border-radius: 8px; color: var(--muted); text-decoration: none; transition: all 0.2s ease; font-size: 14px; }
+    .toc a:hover { background: var(--bg); color: var(--text); }
+    .toc a.active { background: var(--accent); color: #fff; }
+    .back-to-blog { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 14px; margin-bottom: 32px; transition: color 0.2s ease; }
+    .back-to-blog:hover { color: var(--text); }
+    .article-section{ scroll-margin-top: 110px }
+    @media (max-width: 900px){ .article-section{ scroll-margin-top: 120px } }
+    @media (max-width: 600px){ .article-section{ scroll-margin-top: 126px } }
+    @media (max-width: 1024px) { .article-layout { grid-template-columns: 1fr; gap: 24px; } .article-sidebar { position: static; max-height: none; } .article-title { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="./index.html#top" aria-label="Loev Design">
+        <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="68" height="68" />
+      </a>
+      <nav class="nav" role="navigation" aria-label="Основная навигация">
+        <a href="./index.html#services">Цены и услуги</a>
+        <a href="./index.html#cases">Портфолио</a>
+        <a href="./index.html#about">Обо мне</a>
+        <a href="blog.html">Блог</a>
+      </nav>
+      <a href="./index.html#contact" class="btn btn--primary" data-open-contact>Связаться</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="menu-toggle-label">Меню</span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-overlay"></div>
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <a class="logo" href="./index.html#top" aria-label="Loev Design">
+          <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="68" height="68" />
+        </a>
+        <button class="mobile-nav-close" aria-label="Закрыть">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a class="mobile-nav-link" href="./index.html#services">Цены и услуги</a>
+        <a class="mobile-nav-link" href="./index.html#cases">Портфолио</a>
+        <a class="mobile-nav-link" href="./index.html#about">Обо мне</a>
+        <a class="mobile-nav-link" href="blog.html">Блог</a>
+        <a class="mobile-nav-link" href="./index.html#contact">Контакты</a>
+        <a class="mobile-nav-link mobile-nav-cta btn btn--primary" href="./index.html#contact">Оставить заявку</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="reading-progress">
+    <div class="reading-progress-bar" id="readingProgress"></div>
+  </div>
+
+  <main id="main" style="padding-top: 72px;">
+    <article class="article">
+      <div class="container">
+        <div class="article-layout">
+          <div class="article-content">
+            <a href="./blog.html" class="back-to-blog">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Назад к блогу
+            </a>
+            <header class="article-header">
+              <div class="article-meta">
+          <span class="article-category">Теория</span>
+                <time datetime="2024-03-15">15 марта 2024</time>
+                <span class="read-time">8–10 минут</span>
+              </div>
+          <h1 class="article-title">Психология цвета в дизайне: играем на чувствах зрителя</h1>
+              <p class="article-lead">Цвет – это не просто визуальное свойство объекта, это мощнейший инструмент в руках дизайнера, способный вызывать эмоции, формировать ассоциации и даже влиять на принятие решений. От выбора цветовой палитры напрямую зависит, какое впечатление произведет ваш продукт, сайт или рекламная кампания. Понимание психологии цвета позволяет использовать этот инструмент осознанно, добиваясь желаемого эмоционального отклика у аудитории.</p>
+            </header>
+            <div class="article-body">
+              <div class="article-section" id="basics">
+                <h2>Основы психологии цвета: как цвет влияет на наше подсознание</h2>
+                <p>В основе психологии цвета лежит взаимосвязь между определенными цветами и реакциями, которые они вызывают в нашем мозгу. Эти реакции формируются на основе личного опыта, культурных традиций и даже биологических факторов. Например, красный цвет часто ассоциируется с опасностью, что может быть связано с видом крови, в то время как синий цвет напоминает о спокойствии моря или неба.</p>
+                <p>Восприятие цвета субъективно, но существуют общие тенденции, которые позволяют дизайнерам прогнозировать реакцию аудитории на ту или иную цветовую схему. Понимание этих тенденций – ключ к эффективному дизайну.</p>
+                <img src="./For site/04_blog_post/01_post/color circle.png" alt="Цветовой круг для подбора палитры" class="article-image">
+                <p class="article-image-caption">Цветовой круг: база для гармоничных сочетаний и понимания контраста</p>
+              </div>
+              <div class="article-section" id="red">
+                <h2>Красный — привлечение внимания</h2>
+                <p><b>Красный:</b> Цвет энергии, страсти, силы и возбуждения. Он привлекает внимание, создает ощущение срочности и может повышать кровяное давление.</p>
+                <p>Красный — это ваш инструмент мгновенного привлечения внимания, цвет действия, страсти и энергии. Он работает как визуальная тревога: кричит "Смотри сюда!" или "Действуй сейчас!". Идеален для критичных кнопок ("Купить", "Удалить"), предупреждений или статусов ошибок. Его сила — в способности буквально захватывать взгляд, что подтверждают исследования eye-tracking и first-click. Но красный требует дисциплины: используйте только один доминирующий акцент на экран (например, главную кнопку), ограничивая его площадь ~5%. Остальной интерфейс должен оставаться в нейтральных тонах — иначе эффект превратится в визуальный шум. Это не цвет для фона или украшения; он должен нести смысловую нагрузку, как стоп-сигнал или аварийная кнопка. Опыт Material Design и исследования NN/g/Baymard доказывают: красный эффективен только там, где его "крик" оправдан важностью и уникальностью.</p>
+                <img src="./For site/04_blog_post/01_post/red.png" alt="Пример использования красного цвета" class="article-image">
+                <p class="article-image-caption">Красный — мгновенный акцент и сигнал действия</p>
+              </div>
+              <div class="article-section" id="blue">
+                <h2>Синий — доверие и спокойствие</h2>
+                <p><b>Синий:</b> Символ спокойствия, доверия, безопасности и интеллекта. Он ассоциируется с профессионализмом, стабильностью и надежностью.</p>
+                <p>Синий — это фундамент доверия, ясности и спокойствия в интерфейсе. Его выбирают банки, SaaS-платформы и медицинские сервисы не случайно: он снижает тревожность, настраивает на рациональность и создаёт ощущение надёжности. Синий работает как "тихий организатор": структурирует сложную информацию, повышает читаемость и даёт пользователю чувство контроля. Оптимальная доля — 20-30% площади для фонов, шапок, разделителей и статических элементов. Но избегайте монотонности: синий требует контраста с тёплыми акцентами (оранжевые кнопки, жёлтые уведомления), иначе интерфейс станет холодным и безжизненным. Гайдлайны NN/g, принципы визуализации данных (Few, Munzner) и системы Material/Fluent единодушны: синий — лучшая база для сложных интерфейсов, но только в паре с динамикой и тёплыми точками фокуса.</p>
+                <img src="./For site/04_blog_post/01_post/Blue.png" alt="Пример использования синего цвета" class="article-image">
+                <p class="article-image-caption">Синий — база для доверия и спокойствия</p>
+              </div>
+              <div class="article-section" id="green">
+                <h2>Зелёный — рост и здоровье</h2>
+                <p><b>Зелёный:</b> Цвет природы, здоровья, роста и гармонии. Он успокаивает, снижает стресс и ассоциируется с экологичностью и устойчивым развитием.</p>
+                <p>Зелёный — символ роста, баланса и "здоровья" продукта. Это цвет успешных статусов ("Готово", "Оплачено"), экологии и позитивного действия. Он работает как мгновенная галочка подтверждения, снижая когнитивную нагрузку пользователя. Ключ — точечность: используйте его для бейджей, индикаторов прогресса или зон роста на графиках, отводя не более 10-15% площади. Зелёному нужен нейтральный фон (белый, серый), иначе он теряет силу. Материал Design, Fluent UI и Apple HIG отводят ему роль позитивного сигнала. Это не рабочий цвет, а финальный аккорд — используйте его только там, где есть реальный успех.</p>
+                <img src="./For site/04_blog_post/01_post/green.png" alt="Пример использования зелёного цвета" class="article-image">
+                <p class="article-image-caption">Зелёный — цвет успеха и экологичности</p>
+              </div>
+              <div class="article-section" id="yellow">
+                <h2>Жёлтый — энергия и оптимизм</h2>
+                <p><b>Жёлтый:</b> Цвет оптимизма, радости, энергии и интеллекта. Он привлекает внимание, создает ощущение тепла и стимулирует умственную активность.</p>
+                <p>Жёлтый — это энергия, оптимизм и сигнал внимания. Он работает как «визуальный кофеин»: бодрит, предупреждает («Проверьте!», «Обратите внимание!») и создаёт ощущение лёгкости. Идеален для акцентов в интерфейсах, где важно подчеркнуть активность или временный статус (ограниченное предложение, предупреждение без критичности). Его сила — в способности мгновенно выделять элементы без агрессии красного. Но жёлтый капризен: используйте его точечно (до 5-7% площади) для кнопок, ховеров, информационных баннеров или подсветки ключевых данных. Обязательно проверяйте контраст (особенно на белом) — бледно-жёлтый «исчезает», а кислотный раздражает. Опирайтесь на практики Material Design для warning-состояний и исследования NN/g по восприятию временных элементов. Помните: это цвет-«однодневка» — избегайте его в статичных блоках и фонах, иначе утомите пользователя. Его роль — мягко подтолкнуть, а не кричать.</p>
+                <img src="./For site/04_blog_post/01_post/Yellow.png" alt="Пример использования жёлтого цвета" class="article-image">
+                <p class="article-image-caption">Жёлтый — энергия и акцент</p>
+              </div>
+              <div class="article-section" id="black">
+                <h2>Чёрный — статус и премиум</h2>
+                <p><b>Чёрный:</b> Символ элегантности, власти, изысканности и таинственности. Он может создавать ощущение роскоши и премиальности, но в больших количествах может вызывать грусть и депрессию.</p>
+                <p>Чёрный — инструмент для передачи веса, статуса и премиальности. Он создаёт глубину, усиливает контраст типографики и визуальных элементов, повышая субъективное восприятие ценности продукта. Идеален для luxury-сегмента, лаконичных интерфейсов и акцентных блоков. Ключевое условие — безупречный контраст: используйте его для фона ключевых разделов или героев, строго соблюдая стандарты доступности (AA/AAA). Опирайтесь на типографические гайды по читаемости и кейсы премиальных брендов: чёрный работает только когда сочетается с продуманной композицией и высоким качеством исполнения.</p>
+                <img src="./For site/04_blog_post/01_post/BLACK.png" alt="Пример использования чёрного цвета" class="article-image">
+                <p class="article-image-caption">Чёрный — премиум и глубина</p>
+              </div>
+              <div class="article-section" id="white">
+                <h2>Белый — пространство и фокус</h2>
+                <p><b>Белый:</b> Символ чистоты, невинности, простоты и свежести. Он создает ощущение пространства и минимализма.</p>
+                <p>Белый — основа управления пространством и фокусом. Это не пустота, а инструмент для создания смысловых пауз, который задаёт ритм интерфейса, снижает визуальный шум и позволяет глазу отдыхать. Он повышает скорость чтения и сканируемость контента, чётко выделяя главное. Используйте его как базовый фон и для интервалов между блоками, но избегайте механических отступов: «воздух» должен определяться задачами контента, а не шаблонными отступами. Исследования NN/g по читаемости и принципы Эдварда Тафти (Edward Tufte) подтверждают: белое пространство — фундамент чистой иерархии.</p>
+                <img src="./For site/04_blog_post/01_post/white.png" alt="Пример использования белого цвета" class="article-image">
+                <p class="article-image-caption">Белый — пространство и чистота</p>
+              </div>
+              <div class="article-section" id="other">
+                <h2>Другие цвета</h2>
+                <p><b>Фиолетовый:</b> творчество, роскошь, мудрость.<br><b>Оранжевый:</b> энтузиазм, энергия, дружелюбие.<br><b>Розовый:</b> нежность, любовь, романтика.</p>
+              </div>
+              <div class="article-section" id="brands">
+                <h2>Практическое применение в дизайне: бренды, говорящие на языке цвета</h2>
+                <p>Многие известные бренды используют психологию цвета для формирования определенного имиджа и влияния на аудиторию.</p>
+                <ul>
+                  <li><b>McDonald’s (красный и жёлтый):</b> Сочетание этих цветов стимулирует аппетит и создает ощущение быстроты и доступности.</li>
+                  <li><b>Facebook (синий):</b> Синий цвет создает ощущение доверия и надежности, что важно для социальной сети, работающей с личной информацией.</li>
+                  <li><b>Starbucks (зелёный):</b> Зелёный цвет ассоциируется с природой и свежестью, что отражает концепцию компании, предлагающей “натуральный” кофе.</li>
+                  <li><b>Tiffany & Co. (фирменный голубой):</b> Этот цвет символизирует роскошь, изысканность и элегантность, что идеально соответствует бренду, специализирующемуся на ювелирных изделиях.</li>
+                </ul>
+              </div>
+              <div class="article-section" id="cultural">
+                <h2>Культурные различия: цвет говорит на разных языках</h2>
+                <p>Важно учитывать, что восприятие цвета может значительно отличаться в разных культурах. Например, белый цвет в западной культуре символизирует чистоту и невинность, а в некоторых восточных культурах он ассоциируется с трауром. Красный цвет в Китае символизирует удачу и процветание, в то время как в западных странах он может ассоциироваться с опасностью.</p>
+                <p>Перед использованием определенной цветовой палитры необходимо исследовать культурные особенности целевой аудитории, чтобы избежать недопонимания и негативных ассоциаций.</p>
+          </div>
+              <div class="article-section" id="palette-tips">
+                <h2>Советы по выбору цветовой палитры: создаем гармонию</h2>
+                <ul>
+                  <li><b>Определите целевую аудиторию:</b> Учитывайте возраст, пол, культурные особенности и интересы вашей аудитории.</li>
+                  <li><b>Сформулируйте цели дизайна:</b> Определите, какие эмоции и ассоциации вы хотите вызвать у зрителя.</li>
+                  <li><b>Используйте цветовые круги и онлайн-инструменты:</b> Они помогут вам подобрать гармоничные цветовые сочетания.</li>
+                  <li><b>Протестируйте различные варианты:</b> Прежде чем окончательно утвердить цветовую палитру, протестируйте ее на целевой аудитории.</li>
+                  <li><b>Учитывайте контекст:</b> Цвет объекта должен соответствовать его функции и назначению.</li>
+                </ul>
+        </div>
+              <div class="article-section" id="conclusion">
+          <h2>Заключение: осознанный выбор цвета – ключ к успеху</h2>
+                <p>Цвет – это мощный инструмент, который при правильном использовании может значительно повысить эффективность вашего дизайна. Понимание психологии цвета, учет культурных особенностей и осознанный выбор цветовой палитры позволяют создавать визуально привлекательные и эмоционально воздействующие проекты, которые достигают поставленных целей. Не пренебрегайте этим аспектом дизайна, и ваш проект обязательно станет успешным!</p>
+              </div>
+            </div>
+      </div>
+          <aside class="article-sidebar">
+            <nav class="toc">
+              <h3>Содержание статьи</h3>
+              <ul>
+                <li><a href="#basics">Основы психологии цвета</a></li>
+                <li><a href="#red">Красный — привлечение внимания</a></li>
+                <li><a href="#blue">Синий — доверие и спокойствие</a></li>
+                <li><a href="#green">Зелёный — рост и здоровье</a></li>
+                <li><a href="#yellow">Жёлтый — энергия и оптимизм</a></li>
+                <li><a href="#black">Чёрный — статус и премиум</a></li>
+                <li><a href="#white">Белый — пространство и фокус</a></li>
+                <li><a href="#other">Другие цвета</a></li>
+                <li><a href="#brands">Практика брендов</a></li>
+                <li><a href="#cultural">Культурные различия</a></li>
+                <li><a href="#palette-tips">Советы по палитре</a></li>
+                <li><a href="#conclusion">Заключение</a></li>
+              </ul>
+            </nav>
+          </aside>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta-band reveal">
+        <div class="footer-cta-text">
+          <h3>Готовы обсудить проект?</h3>
+          <p>Расскажите о задаче — предложу варианты и сроки уже сегодня</p>
+        </div>
+        <div class="footer-cta-actions">
+          <a href="./index.html#contact" class="btn btn--primary" data-open-contact>Оставить заявку</a>
+          <a href="mailto:loevstudio@gmail.com" class="btn btn--ghost">Написать на email</a>
+        </div>
+      </div>
+
+      <div class="footer-inner">
+        <div class="footer-left">
+          <a class="logo" href="./index.html#top">
+            <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="28" height="28" />
+          </a>
+          <p>© 2025 Loev Design. Все права защищены.</p>
+        </div>
+        <div class="footer-right">
+          <a href="mailto:loevstudio@gmail.com">loevstudio@gmail.com</a>
+          <a href="tel:+79952247076">+7 995 224‑70‑76</a>
+          <a href="./index.html#services">Услуги</a>
+          <a href="./index.html#cases">Портфолио</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./assets/js/main.js?v=14"></script>
+  <!-- Contact Modal -->
+  <div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="contact-modal-overlay"></div>
+    <div class="contact-modal-content">
+      <button class="contact-modal-close" aria-label="Закрыть">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="contact-modal-header">
+        <h2 class="contact-modal-title" id="contact-modal-title">Связаться со мной</h2>
+        <p class="contact-modal-subtitle">Выберите удобный способ связи</p>
+      </div>
+      <div class="contact-modal-links">
+        <a href="https://t.me/Loev_design" target="_blank" rel="noopener" class="contact-link" data-analytics="contact_telegram">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Telegram</span>
+          <span class="contact-link-detail">@Loev_design</span>
+        </a>
+        <a href="tel:+79952247076" class="contact-link" data-analytics="contact_phone">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Телефон</span>
+          <span class="contact-link-detail">+7 995 224-70-76</span>
+        </a>
+        <a href="mailto:loevstudio@gmail.com" class="contact-link" data-analytics="contact_email">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Email</span>
+          <span class="contact-link-detail">loevstudio@gmail.com</span>
+        </a>
+        <a href="https://wa.me/79952247076" target="_blank" rel="noopener" class="contact-link" data-analytics="contact_whatsapp">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M20 3H4a1 1 0 00-1 1v16l4-4h13a1 1 0 001-1V4a1 1 0 00-1-1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>WhatsApp</span>
+          <span class="contact-link-detail">+7 995 224-70-76</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <script>
+    function updateReadingProgress() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.getElementById('readingProgress').style.width = scrollPercent + '%';
+    }
+    document.querySelectorAll('.toc a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+    function updateActiveSection() {
+      const sections = document.querySelectorAll('.article-section');
+      const tocLinks = document.querySelectorAll('.toc a');
+      let currentSection = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentSection) {
+          link.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', () => {
+      updateReadingProgress();
+      updateActiveSection();
+    });
+    updateReadingProgress();
+    updateActiveSection();
+  </script>
+  <script src="./assets/js/directus.js"></script>
+  <script>
+    DirectusCMS.setConfig({
+      baseURL: '',
+      staticToken: ''
+    });
+  </script>
+  <script src="./assets/js/blog-directus.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    window.EMAILJS_PUBLIC_KEY = '89Z-FiQ04aTC83nvf';
+    window.EMAILJS_SERVICE_ID = 'service_6ikbggq';
+    window.EMAILJS_TEMPLATE_ID = 'template_fks8i41';
+  </script>
+</body>
+</html>
