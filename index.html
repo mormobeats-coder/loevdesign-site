@@ -1,18 +1,24 @@
 ﻿<!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <script>
+    // Force dark theme immediately
+    document.documentElement.setAttribute('data-theme', 'dark');
     try {
       var t = localStorage.getItem('theme');
       if (t) document.documentElement.setAttribute('data-theme', t);
-      else document.documentElement.setAttribute('data-theme', 'light');
     } catch(e){
-      document.documentElement.setAttribute('data-theme', 'light');
+      // Keep dark theme
     }
   </script>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
   <meta name="color-scheme" content="dark" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
   <title>Loev Design — графический дизайнер</title>
   <meta name="description" content="Графический дизайнер: брендинг, коммуникационный дизайн, сайты‑лендинги, упаковка. Минимализм, мягкие фиолетовые акценты и свежие анимации." />
   <meta name="theme-color" content="#2563eb" />
@@ -38,9 +44,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/styles.css?v=29" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"></noscript>
+  <style>
+    /* Force dark theme immediately */
+    :root[data-theme="dark"] {
+      --bg: #0b0b0e !important;
+      --text: #f5f7fb !important;
+      --muted: #a8b0be !important;
+      --line: #202534 !important;
+      --card: #11131b !important;
+      --accent: #2d6ae3 !important;
+      --accent-2: #1e4fb8 !important;
+    }
+    body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
+    }
+    .hero, .section, .case, .portfolio-showcase, .benefits-container, .work-flow-container, .faq-container {
+      background: var(--bg) !important;
+    }
+    .reviews-container {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    }
+    .hero .display, .hero .lead, .section h2, .section h3, .case h3, .case p {
+      color: var(--text) !important;
+    }
+  </style>
+  <link rel="stylesheet" href="./assets/css/styles.css?v=49" />
   <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -74,8 +107,8 @@
   <a class="skip-link" href="#main">Перейти к содержимому</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="#top" aria-label="Loev Design">
-        <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="68" height="68" />
+      <a class="logo" href="/" aria-label="Loev Design">
+        <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="68" height="68" loading="eager" />
       </a>
       <nav class="nav" role="navigation" aria-label="Основная навигация">
         <a href="#services">Цены и услуги</a>
@@ -95,8 +128,8 @@
     <div class="mobile-nav-overlay"></div>
     <div class="mobile-nav-panel">
       <div class="mobile-nav-header">
-        <a class="logo" href="#top" aria-label="Loev Design">
-          <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="60" height="60" />
+        <a class="logo" href="/" aria-label="Loev Design">
+          <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="60" height="60" loading="eager" />
         </a>
         <button class="mobile-nav-close" aria-label="Закрыть">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -118,7 +151,7 @@
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-content">
-          <h1 class="display reveal reveal--hero">Разработка сайтов<br>и брендинг, логотипы<br>и айдентика</h1>
+          <h1 class="display reveal reveal--hero">Разработка сайтов.<br>Брендинг, логотипы<br>и айдентика</h1>
           <h2 class="lead reveal reveal--hero">Делаю бренды понятными и заметными: логотипы, айдентика, упаковка и лендинги. Помогу вашему бизнесу звучать громко и ясно, создав яркий и профессиональный дизайн.</h2>
           <div class="cta reveal reveal--hero">
         <a href="#" class="btn btn--primary" data-open-contact>Оставить заявку</a>
@@ -806,7 +839,7 @@
 
       <div class="footer-inner">
         <div class="footer-left">
-          <a class="logo" href="#top">
+          <a class="logo" href="/">
             <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="28" height="28" />
           </a>
           <p>© 2025 Loev Design. Все права защищены.</p>
@@ -823,6 +856,19 @@
 
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    // Preload critical resources
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function() {
+        // Preload non-critical resources
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = './assets/js/main.js?v=15';
+        link.as = 'script';
+        document.head.appendChild(link);
+      });
+    }
+  </script>
   <script defer type="application/ld+json">{
     "@context":"https://schema.org",
     "@type":"Person",
@@ -831,7 +877,7 @@
     "url":"https://loevdesign.ru/",
     "sameAs":["https://loevdesign.ru/"]
   }</script>
-  <script src="./assets/js/main.js?v=14"></script>
+  <script src="./assets/js/main.js?v=15"></script>
   
   <!-- Case Modal - Rockot -->
   <div class="case-modal" id="case-rockot" data-case="rockot" role="dialog" aria-modal="true" aria-label="Rockot — галерея">
