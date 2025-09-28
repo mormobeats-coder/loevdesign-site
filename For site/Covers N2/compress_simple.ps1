@@ -15,3 +15,5 @@ foreach ($file in $files) {
 }
 
 Write-Host "Сжатие завершено!"
+
+
