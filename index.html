@@ -19,27 +19,30 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
-  <title>Loev Design — графический дизайнер</title>
-  <meta name="description" content="Графический дизайнер: брендинг, коммуникационный дизайн, сайты‑лендинги, упаковка. Минимализм, мягкие фиолетовые акценты и свежие анимации." />
-  <meta name="keywords" content="графический дизайнер, брендинг, логотип, айдентика, веб-дизайн, упаковка, коммуникационный дизайн, лендинг" />
+  <title>Профессиональный графический дизайн: брендинг, веб-дизайн, упаковка | Loev Design</title>
+  <meta name="description" content="Услуги графического дизайна: разработка фирменного стиля, создание сайтов и лендингов, дизайн упаковки. Современный минималистичный стиль и аккуратные анимации." />
+  <meta name="keywords" content="графический дизайнер, брендинг, логотип, айдентика, веб-дизайн, упаковка, фирменный стиль, лендинг, UI UX дизайн, печатная продукция" />
   <meta name="author" content="Loev Design" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#2563eb" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Loev Design — графический дизайнер" />
-  <meta property="og:description" content="Брендинг, коммуникационный дизайн, сайт‑лендинг, упаковка. Минимализм, мягкие фиолетовые акценты и свежие анимации." />
+  <meta property="og:title" content="Профессиональный графический дизайн: брендинг, веб-дизайн, упаковка | Loev Design" />
+  <meta property="og:description" content="Услуги графического дизайна: разработка фирменного стиля, создание сайтов и лендингов, дизайн упаковки. Современный минималистичный стиль и аккуратные анимации." />
   <meta property="og:image" content="./For site/01_logo/Бейджик.png" />
   <meta property="og:image:alt" content="Loev Design — графический дизайнер" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://loevdesign.ru/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Loev Design — графический дизайнер" />
-  <meta name="twitter:description" content="Брендинг, коммуникационный дизайн, сайт‑лендинг, упаковка." />
+  <meta name="twitter:title" content="Профессиональный графический дизайн: брендинг, веб-дизайн, упаковка | Loev Design" />
+  <meta name="twitter:description" content="Услуги графического дизайна: разработка фирменного стиля, создание сайтов и лендингов, дизайн упаковки." />
   <meta name="twitter:image" content="./For site/01_logo/Бейджик.png" />
   <meta property="og:site_name" content="Loev Design" />
   <meta property="og:locale" content="ru_RU" />
   
+  <link rel="icon" type="image/svg+xml" href="./For site/01_logo/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./For site/01_logo/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./For site/01_logo/favicon.svg" />
   <link rel="apple-touch-icon" href="./For site/01_logo/icons logo.svg" />
   <link rel="manifest" href="./assets/manifest.webmanifest" crossorigin="use-credentials" />
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -143,6 +146,7 @@
     }
   </style>
   <link rel="stylesheet" href="./assets/css/styles.css?v=50" />
+  <link rel="stylesheet" href="./assets/css/breadcrumbs.css?v=1" />
   <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <link rel="shortcut icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <!-- Yandex.Metrika counter -->
@@ -218,6 +222,21 @@
   </div>
 
   <div id="top"></div>
+  
+  <!-- Breadcrumbs -->
+  <nav aria-label="breadcrumb" class="breadcrumbs">
+    <div class="container">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="https://loevdesign.ru/">
+            <span itemprop="name">Главная</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+  
   <main id="main">
     <section class="hero">
       <div class="container hero-inner">
@@ -942,11 +961,52 @@
   </script>
   <script defer type="application/ld+json">{
     "@context":"https://schema.org",
-    "@type":"Person",
+    "@type":"Organization",
     "name":"Loev Design",
-    "jobTitle":"Студия брендинга и веб‑дизайна",
+    "description":"Профессиональный графический дизайн: брендинг, веб-дизайн, упаковка",
     "url":"https://loevdesign.ru/",
-    "sameAs":["https://loevdesign.ru/"]
+    "logo":"https://loevdesign.ru/For site/01_logo/лого новый.svg",
+    "sameAs":["https://loevdesign.ru/"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+7-995-224-70-76",
+      "contactType": "customer service",
+      "email": "loevstudio@gmail.com"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "RU"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Услуги графического дизайна",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Брендинг и айдентика",
+            "description": "Логотип, фирменный стиль, гайдлайны"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Веб-дизайн",
+            "description": "Лендинги, корпоративные сайты, адаптив"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Дизайн упаковки",
+            "description": "Концепции, прототипы, макеты"
+          }
+        }
+      ]
+    }
   }</script>
   <script src="./assets/js/main.js?v=15"></script>
   
