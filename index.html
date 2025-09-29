@@ -28,16 +28,15 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Loev Design — графический дизайнер" />
   <meta property="og:description" content="Брендинг, коммуникационный дизайн, сайт‑лендинг, упаковка. Минимализм, мягкие фиолетовые акценты и свежие анимации." />
-  <meta property="og:image" content="https://loevdesign.ru/For%20site/01_logo/social-preview.png?v=1" />
+  <meta property="og:image" content="./For site/01_logo/Бейджик.png" />
+  <meta property="og:image:alt" content="Loev Design — графический дизайнер" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Loev Design — графический дизайнер" />
-  <meta property="og:image:type" content="image/png" />
   <meta property="og:url" content="https://loevdesign.ru/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Loev Design — графический дизайнер" />
   <meta name="twitter:description" content="Брендинг, коммуникационный дизайн, сайт‑лендинг, упаковка." />
-  <meta name="twitter:image" content="https://loevdesign.ru/For%20site/01_logo/social-preview.png?v=1" />
+  <meta name="twitter:image" content="./For site/01_logo/Бейджик.png" />
   <meta property="og:site_name" content="Loev Design" />
   <meta property="og:locale" content="ru_RU" />
   
@@ -49,12 +48,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  
-  <!-- Preload critical images -->
-  <link rel="preload" href="./For site/01_logo/лого новый.svg" as="image" type="image/svg+xml">
-  <link rel="preload" href="./For site/Covers N2/optimized/1.jpg" as="image">
-  <!-- Load fonts asynchronously to prevent render blocking -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"></noscript>
   <style>
     /* Force dark theme immediately */
@@ -79,27 +73,6 @@
     }
     .hero .display, .hero .lead, .section h2, .section h3, .case h3, .case p {
       color: var(--text) !important;
-    }
-    
-    /* Force hero elements to be visible on mobile */
-    @media (max-width: 768px) {
-      .hero .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
-      .hero .reveal--hero {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
-      
-      /* Force section titles to be visible on mobile */
-      .section-title.reveal {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
     }
     
     /* Fix benefits container background - override main CSS */
@@ -148,36 +121,28 @@
       background: var(--card) !important;
     }
     
-    /* Mobile specific fixes for reviews section - move content higher */
-    @media (max-width: 480px) {
-      .reviews-container {
-        padding-top: 0 !important;
-        padding-bottom: 40px !important;
+    /* Force hero elements and section titles to be visible on mobile */
+    @media (max-width: 768px) {
+      .hero .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
       }
-      .reviews-content {
-        margin-top: -40px !important;
+      .hero .reveal--hero {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
       }
-      .reviews-content .btn {
-        margin-bottom: 40px !important;
+      
+      /* Force section titles to be visible on mobile */
+      .section-title.reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
       }
     }
-    
   </style>
-  
-  <!-- Load main CSS asynchronously to prevent render blocking -->
-  <link rel="preload" href="./assets/css/styles.css?v=72" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="./assets/css/styles.css?v=72"></noscript>
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <script>
-    // Polyfill for older browsers
-    if (!('relList' in document.createElement('link'))) {
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = './assets/css/styles.css?v=72';
-      document.head.appendChild(link);
-    }
-  </script>
+  <link rel="stylesheet" href="./assets/css/styles.css?v=50" />
   <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <link rel="shortcut icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <!-- Yandex.Metrika counter -->
@@ -187,11 +152,11 @@
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104304944', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104072618', 'ym');
 
-    ym(104304944, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    ym(104072618, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/104304944" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <noscript><div><img src="https://mc.yandex.ru/watch/104072618" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
 </head>
  <body>
@@ -220,7 +185,7 @@
         <a href="#services">Цены и услуги</a>
         <a href="#cases">Портфолио</a>
         <a href="#about">Обо мне</a>
-        <a href="blog">Блог</a>
+        <a href="/blog">Блог</a>
       </nav>
         <a href="#" class="btn btn--primary btn--contact" data-open-contact>Связаться</a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
@@ -245,7 +210,7 @@
         <a class="mobile-nav-link" href="#services">Цены и услуги</a>
         <a class="mobile-nav-link" href="#cases">Портфолио</a>
         <a class="mobile-nav-link" href="#about">Обо мне</a>
-        <a class="mobile-nav-link" href="blog">Блог</a>
+        <a class="mobile-nav-link" href="/blog">Блог</a>
         <a class="mobile-nav-link" href="#contact">Контакты</a>
         <a class="mobile-nav-link mobile-nav-cta btn btn--primary" href="#contact" data-open-contact>Оставить заявку</a>
       </div>
@@ -421,7 +386,7 @@
     <section class="section" style="padding-top: 12px; padding-bottom: 12px;">
       <div class="container">
         <div class="cover-slider cover-slider--rounded">
-          <img id="cover-slider-img" src="./For site/covers for animation/optimized/Frame 641.jpg" alt="cover" loading="eager" />
+          <img id="cover-slider-img" src="./For site/covers for animation/Frame 641.png" alt="cover" />
         </div>
       </div>
     </section>
@@ -430,20 +395,20 @@
       <div class="container">
         <h2 class="section-title reveal">Кейсы</h2>
         <div class="grid cases-grid">
-          <a class="case reveal" href="./case-rockot.html" aria-label="Rockot">
+          <a class="case reveal" href="case-rockot" aria-label="Rockot">
             <picture>
               <img src="./For site/03_cases/Rockot кейс.png" alt="Rockot rebranding — превью" loading="lazy" decoding="async" />
             </picture>
             <div class="case-meta"><span class="tag">Branding</span><h3>Rockot</h3></div>
           </a>
           <!-- Showreel card instead of QRevive and Ephire -->
-          <a class="case reveal case--showreel" href="./showreel.html" aria-label="Showreel">
+          <a class="case reveal case--showreel" href="showreel" aria-label="Showreel">
             <picture>
               <img src="./For site/03_cases/Showreel.png" alt="Showreел — превью" loading="lazy" decoding="async" />
             </picture>
             <div class="case-meta"><span class="tag">Showreel</span><h3>Showreel</h3></div>
           </a>
-          <a class="case reveal" href="./case.html" aria-label="Elfbrus">
+          <a class="case reveal" href="case-elfbrus" aria-label="Elfbrus">
             <picture>
               <img src="./For site/03_cases/Elfbrus кейс.png" alt="Elfbrus — превью" loading="lazy" decoding="async" />
             </picture>
@@ -516,14 +481,14 @@
           <div class="reviews-images-container">
             <div class="reviews-column reviews-column--left">
               <div class="reviews-track reviews-track--up">
-                <img src="For site/06_Otzivi/Отзывы 2.png" alt="Отзыв клиента 2" loading="lazy">
-                <img src="For site/06_Otzivi/Отзывы 2.png" alt="Отзыв клиента 2" loading="lazy">
+                <img src="For site/06_Otzivi/Отзывы 2.png" alt="Отзыв клиента 2">
+                <img src="For site/06_Otzivi/Отзывы 2.png" alt="Отзыв клиента 2">
               </div>
             </div>
             <div class="reviews-column reviews-column--right">
               <div class="reviews-track reviews-track--down">
-                <img src="For site/06_Otzivi/Отзывы 1.png" alt="Отзыв клиента 1" loading="lazy">
-                <img src="For site/06_Otzivi/Отзывы 1.png" alt="Отзыв клиента 1" loading="lazy">
+                <img src="For site/06_Otzivi/Отзывы 1.png" alt="Отзыв клиента 1">
+                <img src="For site/06_Otzivi/Отзывы 1.png" alt="Отзыв клиента 1">
               </div>
             </div>
             <!-- Mobile horizontal animation -->
@@ -559,23 +524,23 @@
             <p class="showcase-caption" id="showcase-caption">Брендинг и айдентика — нейминг, логотип, фирменные цвета и типографика, гайдлайн</p>
             <div class="showcase-frame">
               <div class="showcase-viewport">
-                <img class="showcase-gallery__img" src="./For site/Covers N2/optimized/1.jpg" alt="Слайд 1" loading="eager" />
+                <img class="showcase-gallery__img" src="./For site/Covers N2/1.png" alt="Слайд 1" />
               </div>
             </div>
           </div>
         </div>
         <!-- Данные для слайдера (скрыто) -->
         <div id="showcase-gallery-data" style="display:none">
-          <div data-img="./For site/Covers N2/optimized/1.jpg"></div>
-          <div data-img="./For site/Covers N2/optimized/2.jpg"></div>
-          <div data-img="./For site/Covers N2/optimized/3.jpg"></div>
-          <div data-img="./For site/Covers N2/optimized/4.jpg"></div>
-          <div data-img="./For site/Covers N2/optimized/5.jpg"></div>
-          <div data-img="./For site/Covers N2/optimized/6.jpg"></div>
-          <div data-img="./For site/Covers N2/optimized/8.jpg"></div>
-          <div data-img="./For site/Covers N2/optimized/9.jpg"></div>
-          <div data-img="./For site/Covers N2/optimized/10.jpg"></div>
-          <div data-img="./For site/Covers N2/optimized/11.jpg"></div>
+          <div data-img="./For site/Covers N2/1.png"></div>
+          <div data-img="./For site/Covers N2/2.png"></div>
+          <div data-img="./For site/Covers N2/3.png"></div>
+          <div data-img="./For site/Covers N2/4.png"></div>
+          <div data-img="./For site/Covers N2/5.png"></div>
+          <div data-img="./For site/Covers N2/6.png"></div>
+          <div data-img="./For site/Covers N2/8.png"></div>
+          <div data-img="./For site/Covers N2/9.png"></div>
+          <div data-img="./For site/Covers N2/10.png"></div>
+          <div data-img="./For site/Covers N2/11.png"></div>
         </div>
         <div id="showcase-text-data" style="display:none">
           <div data-text="Брендинг и айдентика — нейминг, логотип, фирменные цвета и типографика, гайдлайн"></div>
@@ -984,59 +949,6 @@
     "sameAs":["https://loevdesign.ru/"]
   }</script>
   <script src="./assets/js/main.js?v=15"></script>
-  <script>
-    // Simple reveal animation for hero elements
-    document.addEventListener('DOMContentLoaded', function() {
-      const revealElements = document.querySelectorAll('.reveal');
-      
-      function checkReveal() {
-        revealElements.forEach(el => {
-          const rect = el.getBoundingClientRect();
-          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-          
-          if (isVisible && !el.classList.contains('in')) {
-            el.classList.add('in');
-          }
-        });
-      }
-      
-      // Force hero elements and section titles to be visible immediately on mobile
-      const isMobile = window.innerWidth <= 768;
-      if (isMobile) {
-        const heroReveals = document.querySelectorAll('.hero .reveal');
-        heroReveals.forEach(el => {
-          el.classList.add('in');
-        });
-        
-        const sectionTitles = document.querySelectorAll('.section-title.reveal');
-        sectionTitles.forEach(el => {
-          el.classList.add('in');
-        });
-      }
-      
-      // Check immediately for all elements
-      setTimeout(checkReveal, 100);
-      
-      // Check on scroll
-      window.addEventListener('scroll', checkReveal);
-      
-      // Check on resize
-      window.addEventListener('resize', function() {
-        const isMobileNow = window.innerWidth <= 768;
-        if (isMobileNow) {
-          const heroReveals = document.querySelectorAll('.hero .reveal');
-          heroReveals.forEach(el => {
-            el.classList.add('in');
-          });
-          
-          const sectionTitles = document.querySelectorAll('.section-title.reveal');
-          sectionTitles.forEach(el => {
-            el.classList.add('in');
-          });
-        }
-      });
-    });
-  </script>
   
   <!-- Case Modal - Rockot -->
   <div class="case-modal" id="case-rockot" data-case="rockot" role="dialog" aria-modal="true" aria-label="Rockot — галерея">
@@ -1276,13 +1188,13 @@
     // Слайдер обложек
     (function(){
       const covers = [
-        './For site/covers for animation/optimized/Frame 641.jpg',
-        './For site/covers for animation/optimized/Frame 640.jpg',
-        './For site/covers for animation/optimized/Frame 639.jpg',
-        './For site/covers for animation/optimized/Frame 638.jpg',
-        './For site/covers for animation/optimized/Frame 637.jpg',
-        './For site/covers for animation/optimized/Frame 636.jpg',
-        './For site/covers for animation/optimized/Frame 635.jpg',
+        './For site/covers for animation/Frame 641.png',
+        './For site/covers for animation/Frame 640.png',
+        './For site/covers for animation/Frame 639.png',
+        './For site/covers for animation/Frame 638.png',
+        './For site/covers for animation/Frame 637.png',
+        './For site/covers for animation/Frame 636.png',
+        './For site/covers for animation/Frame 635.png',
       ];
       
       let currentCoverIndex = 0;
@@ -1340,6 +1252,60 @@
     });
   });
 })();
+</script>
+
+<script>
+  // Simple reveal animation for hero elements
+  document.addEventListener('DOMContentLoaded', function() {
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    function checkReveal() {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isVisible && !el.classList.contains('in')) {
+          el.classList.add('in');
+        }
+      });
+    }
+    
+    // Force hero elements and section titles to be visible immediately on mobile
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      const heroReveals = document.querySelectorAll('.hero .reveal');
+      heroReveals.forEach(el => {
+        el.classList.add('in');
+      });
+      
+      const sectionTitles = document.querySelectorAll('.section-title.reveal');
+      sectionTitles.forEach(el => {
+        el.classList.add('in');
+      });
+    }
+    
+    // Check immediately for all elements
+    setTimeout(checkReveal, 100);
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkReveal);
+    
+    // Check on resize
+    window.addEventListener('resize', function() {
+      const isMobileNow = window.innerWidth <= 768;
+      if (isMobileNow) {
+        const heroReveals = document.querySelectorAll('.hero .reveal');
+        heroReveals.forEach(el => {
+          el.classList.add('in');
+        });
+        
+        const sectionTitles = document.querySelectorAll('.section-title.reveal');
+        sectionTitles.forEach(el => {
+          el.classList.add('in');
+        });
+      }
+    });
+  });
 </script>
 </body>
 </html>

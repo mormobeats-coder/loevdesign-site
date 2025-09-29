@@ -1,10 +1,9 @@
 User-agent: *
 Allow: /
 
-# Карта сайта
+Sitemap: https://loevdesign.ru/sitemap.xml
+User-agent: *
+Allow: /
+
 Sitemap: https://loevdesign.ru/sitemap.xml
 
-# Запретить индексацию тестовых страниц
-Disallow: /test.html
-Disallow: /test-animation.html
-Disallow: /page-template.html
