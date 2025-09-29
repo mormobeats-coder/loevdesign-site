@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Loev Design — Блог</title>
+    <link>https://loevdesign.ru/</link>
+    <description>Статьи о графическом дизайне: брендинг, веб‑дизайн, упаковка.</description>
+    <language>ru-ru</language>
+    <lastBuildDate>Tue, 30 Sep 2025 01:25:00 +0300</lastBuildDate>
+
+    <item>
+      <title>Классификация графических дизайнеров: кто чем занимается и сколько зарабатывает</title>
+      <link>https://loevdesign.ru/blog-classification</link>
+      <guid isPermaLink="true">https://loevdesign.ru/blog-classification</guid>
+      <description>Обзор направлений графического дизайна, компетенций, уровней и доходов.</description>
+    </item>
+
+    <item>
+      <title>Психология цвета в дизайне: играем на чувствах зрителя</title>
+      <link>https://loevdesign.ru/blog-post</link>
+      <guid isPermaLink="true">https://loevdesign.ru/blog-post</guid>
+      <description>Как оттенки влияют на эмоции и решения, и как собрать работающую палитру.</description>
+    </item>
+
+    <item>
+      <title>Папа бренда: роль и ответственность</title>
+      <link>https://loevdesign.ru/blog-papa-brenda</link>
+      <guid isPermaLink="true">https://loevdesign.ru/blog-papa-brenda</guid>
+      <description>О влиянии бренд‑менеджера на процессы и результат в дизайне.</description>
+    </item>
+  </channel>
+</rss>
+
+
