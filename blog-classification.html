@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/styles.css?v=29" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=33" />
   <link rel="stylesheet" href="./assets/css/blog.css" />
   <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <!-- Yandex.Metrika counter -->
@@ -49,11 +49,11 @@
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104072618', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104304944', 'ym');
 
-    ym(104072618, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    ym(104304944, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/104072618" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <noscript><div><img src="https://mc.yandex.ru/watch/104304944" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
   <style>
     .article-layout { display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
@@ -129,7 +129,7 @@
     }
     .reading-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: var(--line); z-index: 1000; }
     .reading-progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.1s ease; }
-    .toc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+    .toc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; }
     .toc h3 { margin: 0 0 16px; font-size: 1.1rem; color: var(--text); }
     .toc ul { list-style: none; padding: 0; margin: 0; }
     .toc li { margin: 0; }
@@ -168,6 +168,8 @@
       overflow-x: auto; 
       -webkit-overflow-scrolling: touch;
       margin: 20px 0;
+      width: 100%;
+      max-width: 100%;
     }
     .article-section [role="table"] [role="rowgroup"] {
       min-width: 600px;
@@ -180,6 +182,8 @@
       .article-section [role="table"] [role="columnheader"] {
         padding: 8px;
         font-size: 14px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
     }
     @media (max-width: 480px) {
@@ -190,6 +194,52 @@
       .article-section [role="table"] [role="columnheader"] {
         padding: 6px;
         font-size: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+    }
+    
+    /* Стили для изображений без пустых зон */
+    .article-image-container {
+      display: inline-block;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .article-image-container .article-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    
+    .article-image-caption {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Дополнительные мобильные стили для предотвращения выхода за края */
+    @media (max-width: 480px) {
+      body {
+        overflow-x: hidden;
+      }
+      .article-content {
+        overflow-x: hidden;
+      }
+      .article-section {
+        overflow-x: hidden;
+      }
+      .article-section p,
+      .article-section li,
+      .article-section h2,
+      .article-section h3 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
       }
     }
   </style>
@@ -205,7 +255,7 @@
         <a href="./index.html#services">Цены и услуги</a>
         <a href="./index.html#cases">Портфолио</a>
         <a href="./index.html#about">Обо мне</a>
-        <a href="/blog">Блог</a>
+        <a href="blog">Блог</a>
       </nav>
       <a href="./index.html#contact" class="btn btn--primary" data-open-contact>Связаться</a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
@@ -229,7 +279,7 @@
         <a class="mobile-nav-link" href="./index.html#services">Цены и услуги</a>
         <a class="mobile-nav-link" href="./index.html#cases">Портфолио</a>
         <a class="mobile-nav-link" href="./index.html#about">Обо мне</a>
-        <a class="mobile-nav-link" href="/blog">Блог</a>
+        <a class="mobile-nav-link" href="blog">Блог</a>
         <a class="mobile-nav-link" href="./index.html#contact">Контакты</a>
         <a class="mobile-nav-link mobile-nav-cta btn btn--primary" href="./index.html#contact">Оставить заявку</a>
       </div>
@@ -243,7 +293,7 @@
       <div class="container">
         <div class="article-layout">
           <div class="article-content">
-            <a href="/blog" class="back-to-blog">
+            <a href="./blog" class="back-to-blog">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -276,17 +326,8 @@
                 <h2>Основные направления графического дизайна</h2>
                 <p>Графический дизайн — многогранная профессия, которая делится на множество специализаций. Рассмотрим наиболее востребованные и перспективные направления.</p>
                 
-                <div class="article-image-container aspect-16-9">
-                  <div class="article-image-placeholder aspect-16-9">
-                    <div class="placeholder-content">
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                        <polyline points="21,15 16,10 5,21"/>
-                      </svg>
-                      <span>Изображение будет добавлено</span>
-                    </div>
-                  </div>
+                <div class="article-image-container">
+                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Направления дизайна.jpg" alt="Основные направления графического дизайна" class="article-image" loading="lazy" decoding="async">
                   <div class="article-image-caption">Основные направления графического дизайна</div>
                 </div>
 
@@ -392,19 +433,10 @@
                 <h3>Профессиональные навыки (хард-скилы)</h3>
                 <p>Графическому дизайнеру требуется разнообразный набор технических навыков, которые можно измерить и проверить.</p>
                 
-                <div class="article-image-container aspect-4-3">
-                  <div class="article-image-placeholder aspect-4-3">
-                    <div class="placeholder-content">
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
-                      </svg>
-                      <span>Изображение будет добавлено</span>
-  </div>
-</div>
+                <div class="article-image-container">
+                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Заработная плата графических дизайнеров.jpg" alt="Навыки и инструменты графического дизайнера" class="article-image" loading="lazy" decoding="async">
                   <div class="article-image-caption">Навыки и инструменты графического дизайнера</div>
-            </div>
+                </div>
 
                 <p><strong>Основные хард-скилы включают:</strong></p>
                 <ul>
@@ -483,16 +515,8 @@
                 <h2>Заработная плата графических дизайнеров</h2>
                 <p>Доходы в профессии графического дизайнера варьируются в широких пределах и зависят от множества факторов: специализации, опыта, региона, типа занятости и конкретной индустрии.</p>
                 
-                <div class="article-image-container aspect-3-2">
-                  <div class="article-image-placeholder aspect-3-2">
-                    <div class="placeholder-content">
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <line x1="12" y1="1" x2="12" y2="23"/>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                      </svg>
-                      <span>Изображение будет добавлено</span>
-                    </div>
-                  </div>
+                <div class="article-image-container">
+                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Заработная плата графических дизайнеров.jpg" alt="Заработная плата графических дизайнеров" class="article-image" loading="lazy" decoding="async">
                   <div class="article-image-caption">Заработная плата графических дизайнеров</div>
                 </div>
 

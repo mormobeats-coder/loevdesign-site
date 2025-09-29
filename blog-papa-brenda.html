@@ -48,11 +48,11 @@
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104072618', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104304944', 'ym');
 
-    ym(104072618, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    ym(104304944, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/104072618" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <noscript><div><img src="https://mc.yandex.ru/watch/104304944" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
   <style>
     .article-layout { display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
@@ -73,7 +73,7 @@
     .article-image-caption { text-align: center; font-size: 14px; color: var(--muted); margin-top: 8px; }
     .reading-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: var(--line); z-index: 1000; }
     .reading-progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.1s ease; }
-    .toc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+    .toc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; }
     .toc h3 { margin: 0 0 16px; font-size: 1.1rem; color: var(--text); }
     .toc ul { list-style: none; padding: 0; margin: 0; }
     .toc li { margin: 0; }
@@ -99,7 +99,7 @@
         <a href="./index.html#services">Цены и услуги</a>
         <a href="./index.html#cases">Портфолио</a>
         <a href="./index.html#about">Обо мне</a>
-        <a href="/blog">Блог</a>
+        <a href="blog">Блог</a>
       </nav>
       <a href="./index.html#contact" class="btn btn--primary" data-open-contact>Связаться</a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
@@ -123,7 +123,7 @@
         <a class="mobile-nav-link" href="./index.html#services">Цены и услуги</a>
         <a class="mobile-nav-link" href="./index.html#cases">Портфолио</a>
         <a class="mobile-nav-link" href="./index.html#about">Обо мне</a>
-        <a class="mobile-nav-link" href="/blog">Блог</a>
+        <a class="mobile-nav-link" href="blog">Блог</a>
         <a class="mobile-nav-link" href="./index.html#contact">Контакты</a>
         <a class="mobile-nav-link mobile-nav-cta btn btn--primary" href="./index.html#contact">Оставить заявку</a>
       </div>
@@ -137,7 +137,7 @@
       <div class="container">
         <div class="article-layout">
           <div class="article-content">
-            <a href="/blog" class="back-to-blog">
+            <a href="./blog" class="back-to-blog">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
