@@ -39,9 +39,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/styles.css?v=29" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=33" />
   <link rel="stylesheet" href="./assets/css/blog.css" />
-  <link rel="icon" href="/Favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./For site/01_logo/favicon.svg" type="image/svg+xml" />
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -49,11 +49,11 @@
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104072618', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104304944', 'ym');
 
-    ym(104072618, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    ym(104304944, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/104072618" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <noscript><div><img src="https://mc.yandex.ru/watch/104304944" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
   <style>
     .article-layout { display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
@@ -80,8 +80,30 @@
       object-position: center;
     }
     .article-image-caption { text-align: center; font-size: 14px; color: var(--muted); margin-top: 8px; }
-    .article-image-container { margin: 32px 0; width: 100%; }
-    .article-image-container .article-image { margin: 0; width: 100%; height: auto; object-fit: contain; object-position: center; display: block; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    .article-image-container { 
+      margin: 32px 0; 
+      position: relative;
+      width: 100%;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .article-image-container .article-image { 
+      margin: 0; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    /* Контейнеры с разными соотношениями сторон */
+    .article-image-container.aspect-16-9 { aspect-ratio: 16/9; }
+    .article-image-container.aspect-4-3 { aspect-ratio: 4/3; }
+    .article-image-container.aspect-3-2 { aspect-ratio: 3/2; }
+    .article-image-container.aspect-square { aspect-ratio: 1/1; }
     .article-image-placeholder { 
       width: 100%; 
       background: var(--card); 
@@ -107,7 +129,7 @@
     }
     .reading-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: var(--line); z-index: 1000; }
     .reading-progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.1s ease; }
-    .toc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+    .toc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; }
     .toc h3 { margin: 0 0 16px; font-size: 1.1rem; color: var(--text); }
     .toc ul { list-style: none; padding: 0; margin: 0; }
     .toc li { margin: 0; }
@@ -146,6 +168,8 @@
       overflow-x: auto; 
       -webkit-overflow-scrolling: touch;
       margin: 20px 0;
+      width: 100%;
+      max-width: 100%;
     }
     .article-section [role="table"] [role="rowgroup"] {
       min-width: 600px;
@@ -158,6 +182,8 @@
       .article-section [role="table"] [role="columnheader"] {
         padding: 8px;
         font-size: 14px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
     }
     @media (max-width: 480px) {
@@ -168,40 +194,68 @@
       .article-section [role="table"] [role="columnheader"] {
         padding: 6px;
         font-size: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
     }
-    /* CTA + reactions */
-    .article-cta { margin: 56px 0 32px; padding: 28px; border-radius: 16px; background: linear-gradient(135deg, rgba(25,118,210,0.25), rgba(21,101,192,0.15)); border: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
-    .article-cta h2 { margin: 0 0 8px; font-size: 1.6rem; color: var(--text); }
-    .article-cta p { margin: 0; color: var(--muted); }
-    .article-cta .cta-actions { display: flex; gap: 12px; }
-    .article-cta .btn-telegram { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(180deg,#2AA7E0,#1C8DC2); color: #fff; text-decoration: none; padding: 14px 20px; border-radius: 12px; font-weight: 700; letter-spacing: .2px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .article-cta .btn-telegram:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(34,158,217,0.42), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .article-cta .btn-telegram:active { transform: translateY(0); box-shadow: 0 6px 18px rgba(34,158,217,0.32), inset 0 1px 0 rgba(255,255,255,0.2); }
-    .article-cta .btn-telegram:focus-visible { outline: 0; box-shadow: 0 0 0 3px rgba(34,158,217,0.35), 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .article-cta .cta-note { font-size: 12px; color: var(--muted); }
-    @media (max-width: 640px){ .article-cta { grid-template-columns: 1fr; } }
-    .article-reactions { margin: 8px 0 0; padding-top: 16px; border-top: 1px dashed var(--line); }
-    .reactions-title { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
-    .reactions-list { display: flex; gap: 10px; flex-wrap: wrap; }
-    .reaction-btn { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--text); user-select: none; transition: transform .08s ease, background .2s ease, border-color .2s ease; }
-    .reaction-btn:hover { transform: translateY(-1px); border-color: var(--accent); }
-    .reaction-btn .count { color: var(--muted); font-size: 12px; }
-    .reaction-btn[aria-pressed="true"] { background: rgba(25,118,210,0.2); border-color: var(--accent); }
+    
+    /* Стили для изображений без пустых зон */
+    .article-image-container {
+      display: inline-block;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .article-image-container .article-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    
+    .article-image-caption {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Дополнительные мобильные стили для предотвращения выхода за края */
+    @media (max-width: 480px) {
+      body {
+        overflow-x: hidden;
+      }
+      .article-content {
+        overflow-x: hidden;
+      }
+      .article-section {
+        overflow-x: hidden;
+      }
+      .article-section p,
+      .article-section li,
+      .article-section h2,
+      .article-section h3 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+      }
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="/" aria-label="Loev Design">
+      <a class="logo" href="./index.html#top" aria-label="Loev Design">
         <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="68" height="68" />
       </a>
       <nav class="nav" role="navigation" aria-label="Основная навигация">
         <a href="./index.html#services">Цены и услуги</a>
         <a href="./index.html#cases">Портфолио</a>
         <a href="./index.html#about">Обо мне</a>
-        <a href="/blog">Блог</a>
+        <a href="blog">Блог</a>
       </nav>
       <a href="./index.html#contact" class="btn btn--primary" data-open-contact>Связаться</a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
@@ -214,7 +268,7 @@
     <div class="mobile-nav-overlay"></div>
     <div class="mobile-nav-panel">
       <div class="mobile-nav-header">
-        <a class="logo" href="/" aria-label="Loev Design">
+        <a class="logo" href="./index.html#top" aria-label="Loev Design">
           <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="68" height="68" />
         </a>
         <button class="mobile-nav-close" aria-label="Закрыть">
@@ -225,7 +279,7 @@
         <a class="mobile-nav-link" href="./index.html#services">Цены и услуги</a>
         <a class="mobile-nav-link" href="./index.html#cases">Портфолио</a>
         <a class="mobile-nav-link" href="./index.html#about">Обо мне</a>
-        <a class="mobile-nav-link" href="/blog">Блог</a>
+        <a class="mobile-nav-link" href="blog">Блог</a>
         <a class="mobile-nav-link" href="./index.html#contact">Контакты</a>
         <a class="mobile-nav-link mobile-nav-cta btn btn--primary" href="./index.html#contact">Оставить заявку</a>
       </div>
@@ -239,7 +293,7 @@
       <div class="container">
         <div class="article-layout">
           <div class="article-content">
-            <a href="/blog" class="back-to-blog">
+            <a href="./blog" class="back-to-blog">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -255,7 +309,7 @@
               <p class="article-lead">Графический дизайн — это мощный инструмент визуальной коммуникации, который окружает нас повсюду: от узнаваемого логотипа на упаковке утреннего кофе до интуитивно понятного интерфейса в приложении на смартфоне.</p>
             </header>
             <div class="article-cover">
-              <img src="/For site/04_blog_post/03_Classification of graphic designers/Первая обложка статьи.png" alt="Классификация графических дизайнеров" loading="eager" decoding="async">
+              <img src="./For site/04_blog_post/03_Classification of graphic designers/Первая обложка статьи.png" alt="Классификация графических дизайнеров" loading="eager" decoding="async">
               <div class="article-image-caption">Классификация графических дизайнеров: направления, навыки и карьера</div>
             </div>
             <div class="article-body">
@@ -273,7 +327,7 @@
                 <p>Графический дизайн — многогранная профессия, которая делится на множество специализаций. Рассмотрим наиболее востребованные и перспективные направления.</p>
                 
                 <div class="article-image-container">
-                  <img class="article-image" src="/For site/04_blog_post/03_Classification of graphic designers/Направления дизайна.jpg" alt="Основные направления графического дизайна" loading="lazy" decoding="async">
+                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Направления дизайна.jpg" alt="Основные направления графического дизайна" class="article-image" loading="lazy" decoding="async">
                   <div class="article-image-caption">Основные направления графического дизайна</div>
                 </div>
 
@@ -380,7 +434,7 @@
                 <p>Графическому дизайнеру требуется разнообразный набор технических навыков, которые можно измерить и проверить.</p>
                 
                 <div class="article-image-container">
-                  <img class="article-image" src="/For site/04_blog_post/03_Classification of graphic designers/Навыки дизайнера.jpg" alt="Навыки и инструменты графического дизайнера" loading="lazy" decoding="async">
+                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Заработная плата графических дизайнеров.jpg" alt="Навыки и инструменты графического дизайнера" class="article-image" loading="lazy" decoding="async">
                   <div class="article-image-caption">Навыки и инструменты графического дизайнера</div>
                 </div>
 
@@ -462,7 +516,7 @@
                 <p>Доходы в профессии графического дизайнера варьируются в широких пределах и зависят от множества факторов: специализации, опыта, региона, типа занятости и конкретной индустрии.</p>
                 
                 <div class="article-image-container">
-                  <img class="article-image" src="/For site/04_blog_post/03_Classification of graphic designers/Заработная плата графических дизайнеров.jpg" alt="Заработная плата графических дизайнеров" loading="lazy" decoding="async">
+                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Заработная плата графических дизайнеров.jpg" alt="Заработная плата графических дизайнеров" class="article-image" loading="lazy" decoding="async">
                   <div class="article-image-caption">Заработная плата графических дизайнеров</div>
                 </div>
 
@@ -568,68 +622,6 @@
 
                 <p>Выбирая специализацию в графическом дизайне, ориентируйтесь не только на текущую востребованность и уровень доходов, но и на свои интересы и сильные стороны. Любовь к своей работе и постоянное развитие — главные слагаемые успеха в этой творческой и многогранной профессии.</p>
               </div>
-              <div class="article-section" id="cta">
-                <div class="article-cta">
-                  <div>
-                    <h2>Понравилась статья?</h2>
-                    <p>Больше разборов, кейсов и практики в Telegram.</p>
-                  </div>
-                  <div class="cta-actions">
-                    <a class="btn-telegram" href="https://t.me/Loev_Dsgn" target="_blank" rel="noopener" aria-label="Подписаться в Telegram">Подписаться @Loev_Dsgn</a>
-                  </div>
-                  <div class="cta-note">Нажмите и присоединяйтесь к каналу</div>
-                </div>
-                <div class="article-reactions" id="article-reactions">
-                  <p class="reactions-title">Как вам материал?</p>
-                  <div class="reactions-list">
-                    <button class="reaction-btn" type="button" data-reaction="like" aria-pressed="false" aria-label="Нравится">👍 <span class="count">0</span></button>
-                    <button class="reaction-btn" type="button" data-reaction="love" aria-pressed="false" aria-label="Восхищение">❤️ <span class="count">0</span></button>
-                    <button class="reaction-btn" type="button" data-reaction="mindblown" aria-pressed="false" aria-label="Вау">🤯 <span class="count">0</span></button>
-                    <button class="reaction-btn" type="button" data-reaction="sleepy" aria-pressed="false" aria-label="Скучно">😴 <span class="count">0</span></button>
-                    <button class="reaction-btn" type="button" data-reaction="dislike" aria-pressed="false" aria-label="Не зашло">👎 <span class="count">0</span></button>
-                  </div>
-                </div>
-              </div>
-              <script>
-                (function(){
-                  try{
-                    var keyBase = 'articleReactions:' + location.pathname;
-                    var saved = JSON.parse(localStorage.getItem(keyBase) || '{}');
-                    var chosen = localStorage.getItem(keyBase+':chosen') || '';
-                    document.querySelectorAll('#article-reactions .reaction-btn').forEach(function(btn){
-                      var type = btn.getAttribute('data-reaction');
-                      var countEl = btn.querySelector('.count');
-                      var val = saved[type] || 0;
-                      countEl.textContent = String(val);
-                      if(chosen === type){ btn.setAttribute('aria-pressed','true'); }
-                      btn.addEventListener('click', function(){
-                        var currentChosen = localStorage.getItem(keyBase+':chosen') || '';
-                        if(currentChosen && currentChosen !== type){
-                          var prev = document.querySelector('#article-reactions .reaction-btn[data-reaction="'+currentChosen+'"]');
-                          if(prev){ prev.setAttribute('aria-pressed','false'); }
-                          if(saved[currentChosen] > 0){ saved[currentChosen] = saved[currentChosen] - 1; }
-                        }
-                        var nowPressed = btn.getAttribute('aria-pressed') === 'true';
-                        if(nowPressed){
-                          btn.setAttribute('aria-pressed','false');
-                          saved[type] = Math.max(0, (saved[type]||0) - 1);
-                          localStorage.removeItem(keyBase+':chosen');
-                        } else {
-                          btn.setAttribute('aria-pressed','true');
-                          saved[type] = (saved[type]||0) + 1;
-                          localStorage.setItem(keyBase+':chosen', type);
-                        }
-                        localStorage.setItem(keyBase, JSON.stringify(saved));
-                        document.querySelectorAll('#article-reactions .reaction-btn').forEach(function(b){
-                          var t = b.getAttribute('data-reaction');
-                          var c = b.querySelector('.count');
-                          c.textContent = String(saved[t]||0);
-                        });
-                      });
-                    });
-                  }catch(e){}
-                })();
-              </script>
             </div>
           </div>
           <aside class="article-sidebar">
@@ -668,7 +660,7 @@
 
       <div class="footer-inner">
         <div class="footer-left">
-          <a class="logo" href="/">
+          <a class="logo" href="./index.html#top">
             <img src="./For site/01_logo/лого новый.svg" alt="Логотип" width="28" height="28" />
           </a>
           <p>© 2025 Loev Design. Все права защищены.</p>
