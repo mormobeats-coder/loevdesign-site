@@ -92,6 +92,24 @@
     @media (max-width: 900px){ .article-section{ scroll-margin-top: 120px } }
     @media (max-width: 600px){ .article-section{ scroll-margin-top: 126px } }
     @media (max-width: 1024px) { .article-layout { grid-template-columns: 1fr; gap: 24px; } .article-sidebar { position: static; max-height: none; } .article-title { font-size: 2rem; } .toc { position: static; top: auto; max-height: none; } }
+    /* CTA + reactions */
+    .article-cta { margin: 56px 0 32px; padding: 28px; border-radius: 16px; background: linear-gradient(135deg, rgba(25,118,210,0.25), rgba(21,101,192,0.15)); border: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .article-cta h2 { margin: 0 0 8px; font-size: 1.6rem; color: var(--text); }
+    .article-cta p { margin: 0; color: var(--muted); }
+    .article-cta .cta-actions { display: flex; gap: 12px; }
+    .article-cta .btn-telegram { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(180deg,#2AA7E0,#1C8DC2); color: #fff; text-decoration: none; padding: 14px 20px; border-radius: 12px; font-weight: 700; letter-spacing: .2px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .article-cta .btn-telegram:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(34,158,217,0.42), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .article-cta .btn-telegram:active { transform: translateY(0); box-shadow: 0 6px 18px rgba(34,158,217,0.32), inset 0 1px 0 rgba(255,255,255,0.2); }
+    .article-cta .btn-telegram:focus-visible { outline: 0; box-shadow: 0 0 0 3px rgba(34,158,217,0.35), 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .article-cta .cta-note { font-size: 12px; color: var(--muted); }
+    @media (max-width: 640px){ .article-cta { grid-template-columns: 1fr; } }
+    .article-reactions { margin: 8px 0 0; padding-top: 16px; border-top: 1px dashed var(--line); }
+    .reactions-title { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+    .reactions-list { display: flex; gap: 10px; flex-wrap: wrap; }
+    .reaction-btn { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--text); user-select: none; transition: transform .08s ease, background .2s ease, border-color .2s ease; }
+    .reaction-btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+    .reaction-btn .count { color: var(--muted); font-size: 12px; }
+    .reaction-btn[aria-pressed="true"] { background: rgba(25,118,210,0.2); border-color: var(--accent); }
   </style>
 </head>
 <body>
@@ -242,6 +260,28 @@
               <div class="article-section" id="conclusion">
           <h2>Заключение: осознанный выбор цвета – ключ к успеху</h2>
                 <p>Цвет – это мощный инструмент, который при правильном использовании может значительно повысить эффективность вашего дизайна. Понимание психологии цвета, учет культурных особенностей и осознанный выбор цветовой палитры позволяют создавать визуально привлекательные и эмоционально воздействующие проекты, которые достигают поставленных целей. Не пренебрегайте этим аспектом дизайна, и ваш проект обязательно станет успешным!</p>
+              </div>
+              <div class="article-section" id="cta">
+                <div class="article-cta">
+                  <div>
+                    <h2>Понравилась статья?</h2>
+                    <p>Больше разборов, кейсов и практики в Telegram.</p>
+                  </div>
+                  <div class="cta-actions">
+                    <a class="btn-telegram" href="https://t.me/Loev_Dsgn" target="_blank" rel="noopener" aria-label="Подписаться в Telegram">Подписаться @Loev_Dsgn</a>
+                  </div>
+                  <div class="cta-note">Нажмите и присоединяйтесь к каналу</div>
+                </div>
+                <div class="article-reactions" id="article-reactions">
+                  <p class="reactions-title">Как вам материал?</p>
+                  <div class="reactions-list">
+                    <button class="reaction-btn" type="button" data-reaction="like" aria-pressed="false" aria-label="Нравится">👍 <span class="count">0</span></button>
+                    <button class="reaction-btn" type="button" data-reaction="love" aria-pressed="false" aria-label="Восхищение">❤️ <span class="count">0</span></button>
+                    <button class="reaction-btn" type="button" data-reaction="mindblown" aria-pressed="false" aria-label="Вау">🤯 <span class="count">0</span></button>
+                    <button class="reaction-btn" type="button" data-reaction="sleepy" aria-pressed="false" aria-label="Скучно">😴 <span class="count">0</span></button>
+                    <button class="reaction-btn" type="button" data-reaction="dislike" aria-pressed="false" aria-label="Не зашло">👎 <span class="count">0</span></button>
+                  </div>
+                </div>
               </div>
             </div>
       </div>
@@ -401,6 +441,46 @@
     window.EMAILJS_PUBLIC_KEY = '89Z-FiQ04aTC83nvf';
     window.EMAILJS_SERVICE_ID = 'service_6ikbggq';
     window.EMAILJS_TEMPLATE_ID = 'template_fks8i41';
+  </script>
+  <script>
+    (function(){
+      try{
+        var keyBase = 'articleReactions:' + location.pathname;
+        var saved = JSON.parse(localStorage.getItem(keyBase) || '{}');
+        var chosen = localStorage.getItem(keyBase+':chosen') || '';
+        document.querySelectorAll('#article-reactions .reaction-btn').forEach(function(btn){
+          var type = btn.getAttribute('data-reaction');
+          var countEl = btn.querySelector('.count');
+          var val = saved[type] || 0;
+          countEl.textContent = String(val);
+          if(chosen === type){ btn.setAttribute('aria-pressed','true'); }
+          btn.addEventListener('click', function(){
+            var currentChosen = localStorage.getItem(keyBase+':chosen') || '';
+            if(currentChosen && currentChosen !== type){
+              var prev = document.querySelector('#article-reactions .reaction-btn[data-reaction="'+currentChosen+'"]');
+              if(prev){ prev.setAttribute('aria-pressed','false'); }
+              if(saved[currentChosen] > 0){ saved[currentChosen] = saved[currentChosen] - 1; }
+            }
+            var nowPressed = btn.getAttribute('aria-pressed') === 'true';
+            if(nowPressed){
+              btn.setAttribute('aria-pressed','false');
+              saved[type] = Math.max(0, (saved[type]||0) - 1);
+              localStorage.removeItem(keyBase+':chosen');
+            } else {
+              btn.setAttribute('aria-pressed','true');
+              saved[type] = (saved[type]||0) + 1;
+              localStorage.setItem(keyBase+':chosen', type);
+            }
+            localStorage.setItem(keyBase, JSON.stringify(saved));
+            document.querySelectorAll('#article-reactions .reaction-btn').forEach(function(b){
+              var t = b.getAttribute('data-reaction');
+              var c = b.querySelector('.count');
+              c.textContent = String(saved[t]||0);
+            });
+          });
+        });
+      }catch(e){}
+    })();
   </script>
 </body>
 </html>

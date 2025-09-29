@@ -88,22 +88,18 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .article-image-container .article-image { 
       margin: 0; 
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: contain;
       object-position: center;
+      display: block;
     }
-    /* Контейнеры с разными соотношениями сторон */
-    .article-image-container.aspect-16-9 { aspect-ratio: 16/9; }
-    .article-image-container.aspect-4-3 { aspect-ratio: 4/3; }
-    .article-image-container.aspect-3-2 { aspect-ratio: 3/2; }
-    .article-image-container.aspect-square { aspect-ratio: 1/1; }
     .article-image-placeholder { 
       width: 100%; 
       background: var(--card); 
@@ -200,18 +196,18 @@
     }
     
     /* Стили для изображений без пустых зон */
-    .article-image-container {
-      display: inline-block;
-      width: 100%;
-      max-width: 100%;
+    .article-cover {
+      margin: 32px 0;
+      text-align: center;
     }
     
-    .article-image-container .article-image {
+    .article-cover .article-image {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 8px;
+      border-radius: 12px;
       object-fit: contain;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
     
     .article-image-caption {
@@ -242,6 +238,24 @@
         hyphens: auto;
       }
     }
+    /* CTA + reactions */
+    .article-cta { margin: 56px 0 32px; padding: 28px; border-radius: 16px; background: linear-gradient(135deg, rgba(25,118,210,0.25), rgba(21,101,192,0.15)); border: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .article-cta h2 { margin: 0 0 8px; font-size: 1.6rem; color: var(--text); }
+    .article-cta p { margin: 0; color: var(--muted); }
+    .article-cta .cta-actions { display: flex; gap: 12px; }
+    .article-cta .btn-telegram { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(180deg,#2AA7E0,#1C8DC2); color: #fff; text-decoration: none; padding: 14px 20px; border-radius: 12px; font-weight: 700; letter-spacing: .2px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .article-cta .btn-telegram:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(34,158,217,0.42), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .article-cta .btn-telegram:active { transform: translateY(0); box-shadow: 0 6px 18px rgba(34,158,217,0.32), inset 0 1px 0 rgba(255,255,255,0.2); }
+    .article-cta .btn-telegram:focus-visible { outline: 0; box-shadow: 0 0 0 3px rgba(34,158,217,0.35), 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .article-cta .cta-note { font-size: 12px; color: var(--muted); }
+    @media (max-width: 640px){ .article-cta { grid-template-columns: 1fr; } }
+    .article-reactions { margin: 8px 0 0; padding-top: 16px; border-top: 1px dashed var(--line); }
+    .reactions-title { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+    .reactions-list { display: flex; gap: 10px; flex-wrap: wrap; }
+    .reaction-btn { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--text); user-select: none; transition: transform .08s ease, background .2s ease, border-color .2s ease; }
+    .reaction-btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+    .reaction-btn .count { color: var(--muted); font-size: 12px; }
+    .reaction-btn[aria-pressed="true"] { background: rgba(25,118,210,0.2); border-color: var(--accent); }
   </style>
 </head>
 <body>
@@ -310,7 +324,6 @@
             </header>
             <div class="article-cover">
               <img src="./For site/04_blog_post/03_Classification of graphic designers/Первая обложка статьи.png" alt="Классификация графических дизайнеров" loading="eager" decoding="async">
-              <div class="article-image-caption">Классификация графических дизайнеров: направления, навыки и карьера</div>
             </div>
             <div class="article-body">
             <div class="article-section" id="intro">
@@ -328,7 +341,6 @@
                 
                 <div class="article-image-container">
                   <img src="./For site/04_blog_post/03_Classification of graphic designers/Направления дизайна.jpg" alt="Основные направления графического дизайна" class="article-image" loading="lazy" decoding="async">
-                  <div class="article-image-caption">Основные направления графического дизайна</div>
                 </div>
 
                 <h3>1. Бренд-дизайн и айдентика</h3>
@@ -434,8 +446,7 @@
                 <p>Графическому дизайнеру требуется разнообразный набор технических навыков, которые можно измерить и проверить.</p>
                 
                 <div class="article-image-container">
-                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Заработная плата графических дизайнеров.jpg" alt="Навыки и инструменты графического дизайнера" class="article-image" loading="lazy" decoding="async">
-                  <div class="article-image-caption">Навыки и инструменты графического дизайнера</div>
+                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Навыки дизайнера.jpg" alt="Навыки и инструменты графического дизайнера" class="article-image" loading="lazy" decoding="async">
                 </div>
 
                 <p><strong>Основные хард-скилы включают:</strong></p>
@@ -517,7 +528,6 @@
                 
                 <div class="article-image-container">
                   <img src="./For site/04_blog_post/03_Classification of graphic designers/Заработная плата графических дизайнеров.jpg" alt="Заработная плата графических дизайнеров" class="article-image" loading="lazy" decoding="async">
-                  <div class="article-image-caption">Заработная плата графических дизайнеров</div>
                 </div>
 
                 <h3>Зарплаты в России</h3>
@@ -621,6 +631,28 @@
                 <p>Несмотря на рост конкуренции, хорошие специалисты, способные предлагать креативные решения и глубоко понимать задачи бизнеса, будут всегда в цене. Как отмечает Дмитрий Краснов, куратор программ по графическому дизайну: "У хороших графических дизайнеров конкурентов-то и нет по сути. За них еще будут конкурировать как частные заказчики, так и компании".</p>
 
                 <p>Выбирая специализацию в графическом дизайне, ориентируйтесь не только на текущую востребованность и уровень доходов, но и на свои интересы и сильные стороны. Любовь к своей работе и постоянное развитие — главные слагаемые успеха в этой творческой и многогранной профессии.</p>
+              </div>
+              <div class="article-section" id="cta">
+                <div class="article-cta">
+                  <div>
+                    <h2>Понравилась статья?</h2>
+                    <p>Больше разборов, кейсов и практики в Telegram.</p>
+                  </div>
+                  <div class="cta-actions">
+                    <a class="btn-telegram" href="https://t.me/Loev_Dsgn" target="_blank" rel="noopener" aria-label="Подписаться в Telegram">Подписаться @Loev_Dsgn</a>
+                  </div>
+                  <div class="cta-note">Нажмите и присоединяйтесь к каналу</div>
+                </div>
+                <div class="article-reactions" id="article-reactions">
+                  <p class="reactions-title">Как вам материал?</p>
+                  <div class="reactions-list">
+                    <button class="reaction-btn" type="button" data-reaction="like" aria-pressed="false" aria-label="Нравится">👍 <span class="count">0</span></button>
+                    <button class="reaction-btn" type="button" data-reaction="love" aria-pressed="false" aria-label="Восхищение">❤️ <span class="count">0</span></button>
+                    <button class="reaction-btn" type="button" data-reaction="mindblown" aria-pressed="false" aria-label="Вау">🤯 <span class="count">0</span></button>
+                    <button class="reaction-btn" type="button" data-reaction="sleepy" aria-pressed="false" aria-label="Скучно">😴 <span class="count">0</span></button>
+                    <button class="reaction-btn" type="button" data-reaction="dislike" aria-pressed="false" aria-label="Не зашло">👎 <span class="count">0</span></button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -730,6 +762,46 @@
     }
     window.addEventListener('scroll', updateReadingProgress);
     updateReadingProgress();
+  </script>
+  <script>
+    (function(){
+      try{
+        var keyBase = 'articleReactions:' + location.pathname;
+        var saved = JSON.parse(localStorage.getItem(keyBase) || '{}');
+        var chosen = localStorage.getItem(keyBase+':chosen') || '';
+        document.querySelectorAll('#article-reactions .reaction-btn').forEach(function(btn){
+          var type = btn.getAttribute('data-reaction');
+          var countEl = btn.querySelector('.count');
+          var val = saved[type] || 0;
+          countEl.textContent = String(val);
+          if(chosen === type){ btn.setAttribute('aria-pressed','true'); }
+          btn.addEventListener('click', function(){
+            var currentChosen = localStorage.getItem(keyBase+':chosen') || '';
+            if(currentChosen && currentChosen !== type){
+              var prev = document.querySelector('#article-reactions .reaction-btn[data-reaction="'+currentChosen+'"]');
+              if(prev){ prev.setAttribute('aria-pressed','false'); }
+              if(saved[currentChosen] > 0){ saved[currentChosen] = saved[currentChosen] - 1; }
+            }
+            var nowPressed = btn.getAttribute('aria-pressed') === 'true';
+            if(nowPressed){
+              btn.setAttribute('aria-pressed','false');
+              saved[type] = Math.max(0, (saved[type]||0) - 1);
+              localStorage.removeItem(keyBase+':chosen');
+            } else {
+              btn.setAttribute('aria-pressed','true');
+              saved[type] = (saved[type]||0) + 1;
+              localStorage.setItem(keyBase+':chosen', type);
+            }
+            localStorage.setItem(keyBase, JSON.stringify(saved));
+            document.querySelectorAll('#article-reactions .reaction-btn').forEach(function(b){
+              var t = b.getAttribute('data-reaction');
+              var c = b.querySelector('.count');
+              c.textContent = String(saved[t]||0);
+            });
+          });
+        });
+      }catch(e){}
+    })();
   </script>
   
 </body>
