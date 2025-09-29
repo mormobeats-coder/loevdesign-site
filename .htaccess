@@ -1,14 +1,23 @@
 # Удаление расширений .html из URL
 RewriteEngine On
 
-# Удаляем .html из URL если он есть
+# Избежать конфликтов с MultiViews/Indexes, которые могут вызывать 403
+Options -MultiViews
+Options -Indexes
+
+# Явно указываем файл по умолчанию и корень
+DirectoryIndex index.html
+RewriteRule ^$ index.html [L]
+
+# Перенаправляем внешние запросы с .html на URL без расширения (301)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ %1 [R=301,L,NE]
+
+# Внутренне обслуживаем URL без расширения, если существует соответствующий .html
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
-
-# Перенаправляем с .html на URL без расширения
-RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
-RewriteRule ^ /%1? [NC,L,R=301]
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
 
 # Кэширование статических файлов
 <IfModule mod_expires.c>
