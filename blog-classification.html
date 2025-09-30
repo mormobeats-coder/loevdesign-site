@@ -88,18 +88,22 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .article-image-container .article-image { 
       margin: 0; 
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: contain;
       object-position: center;
-      display: block;
     }
+    /* Контейнеры с разными соотношениями сторон */
+    .article-image-container.aspect-16-9 { aspect-ratio: 16/9; }
+    .article-image-container.aspect-4-3 { aspect-ratio: 4/3; }
+    .article-image-container.aspect-3-2 { aspect-ratio: 3/2; }
+    .article-image-container.aspect-square { aspect-ratio: 1/1; }
     .article-image-placeholder { 
       width: 100%; 
       background: var(--card); 
@@ -142,6 +146,24 @@
       .article-sidebar { position: static; max-height: none; } 
       .article-title { font-size: 2rem; }
     }
+    /* CTA + reactions */
+    .article-cta { margin: 56px 0 32px; padding: 28px; border-radius: 16px; background: linear-gradient(135deg, rgba(25,118,210,0.25), rgba(21,101,192,0.15)); border: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .article-cta h2 { margin: 0 0 8px; font-size: 1.6rem; color: var(--text); }
+    .article-cta p { margin: 0; color: var(--muted); }
+    .article-cta .cta-actions { display: flex; gap: 12px; }
+    .article-cta .btn-telegram { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(180deg,#2AA7E0,#1C8DC2); color: #fff; text-decoration: none; padding: 14px 20px; border-radius: 12px; font-weight: 700; letter-spacing: .2px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .article-cta .btn-telegram:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(34,158,217,0.42), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .article-cta .btn-telegram:active { transform: translateY(0); box-shadow: 0 6px 18px rgba(34,158,217,0.32), inset 0 1px 0 rgba(255,255,255,0.2); }
+    .article-cta .btn-telegram:focus-visible { outline: 0; box-shadow: 0 0 0 3px rgba(34,158,217,0.35), 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .article-cta .cta-note { font-size: 12px; color: var(--muted); }
+    @media (max-width: 640px){ .article-cta { grid-template-columns: 1fr; } }
+    .article-reactions { margin: 8px 0 0; padding-top: 16px; border-top: 1px dashed var(--line); }
+    .reactions-title { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+    .reactions-list { display: flex; gap: 10px; flex-wrap: wrap; }
+    .reaction-btn { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--text); user-select: none; transition: transform .08s ease, background .2s ease, border-color .2s ease; }
+    .reaction-btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+    .reaction-btn .count { color: var(--muted); font-size: 12px; }
+    .reaction-btn[aria-pressed="true"] { background: rgba(25,118,210,0.2); border-color: var(--accent); }
     @media (max-width: 768px) {
       .article-title { font-size: 1.8rem; }
       .article-lead { font-size: 1.1rem; }
@@ -196,18 +218,18 @@
     }
     
     /* Стили для изображений без пустых зон */
-    .article-cover {
-      margin: 32px 0;
-      text-align: center;
+    .article-image-container {
+      display: inline-block;
+      width: 100%;
+      max-width: 100%;
     }
     
-    .article-cover .article-image {
+    .article-image-container .article-image {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 12px;
+      border-radius: 8px;
       object-fit: contain;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
     
     .article-image-caption {
@@ -238,24 +260,6 @@
         hyphens: auto;
       }
     }
-    /* CTA + reactions */
-    .article-cta { margin: 56px 0 32px; padding: 28px; border-radius: 16px; background: linear-gradient(135deg, rgba(25,118,210,0.25), rgba(21,101,192,0.15)); border: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
-    .article-cta h2 { margin: 0 0 8px; font-size: 1.6rem; color: var(--text); }
-    .article-cta p { margin: 0; color: var(--muted); }
-    .article-cta .cta-actions { display: flex; gap: 12px; }
-    .article-cta .btn-telegram { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(180deg,#2AA7E0,#1C8DC2); color: #fff; text-decoration: none; padding: 14px 20px; border-radius: 12px; font-weight: 700; letter-spacing: .2px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .article-cta .btn-telegram:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(34,158,217,0.42), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .article-cta .btn-telegram:active { transform: translateY(0); box-shadow: 0 6px 18px rgba(34,158,217,0.32), inset 0 1px 0 rgba(255,255,255,0.2); }
-    .article-cta .btn-telegram:focus-visible { outline: 0; box-shadow: 0 0 0 3px rgba(34,158,217,0.35), 0 10px 24px rgba(34,158,217,0.35), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .article-cta .cta-note { font-size: 12px; color: var(--muted); }
-    @media (max-width: 640px){ .article-cta { grid-template-columns: 1fr; } }
-    .article-reactions { margin: 8px 0 0; padding-top: 16px; border-top: 1px dashed var(--line); }
-    .reactions-title { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
-    .reactions-list { display: flex; gap: 10px; flex-wrap: wrap; }
-    .reaction-btn { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--text); user-select: none; transition: transform .08s ease, background .2s ease, border-color .2s ease; }
-    .reaction-btn:hover { transform: translateY(-1px); border-color: var(--accent); }
-    .reaction-btn .count { color: var(--muted); font-size: 12px; }
-    .reaction-btn[aria-pressed="true"] { background: rgba(25,118,210,0.2); border-color: var(--accent); }
   </style>
 </head>
 <body>
@@ -324,6 +328,7 @@
             </header>
             <div class="article-cover">
               <img src="./For site/04_blog_post/03_Classification of graphic designers/Первая обложка статьи.png" alt="Классификация графических дизайнеров" loading="eager" decoding="async">
+              <div class="article-image-caption">Классификация графических дизайнеров: направления, навыки и карьера</div>
             </div>
             <div class="article-body">
             <div class="article-section" id="intro">
@@ -338,9 +343,8 @@
               <div class="article-section" id="directions">
                 <h2>Основные направления графического дизайна</h2>
                 <p>Графический дизайн — многогранная профессия, которая делится на множество специализаций. Рассмотрим наиболее востребованные и перспективные направления.</p>
-                
-                <div class="article-image-container">
-                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Направления дизайна.jpg" alt="Основные направления графического дизайна" class="article-image" loading="lazy" decoding="async">
+                <div class="article-image-container" style="aspect-ratio:2.26;">
+                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Навыки дизайнера.jpg" alt="Навыки и направления дизайна" class="article-image" loading="lazy" decoding="async">
                 </div>
 
                 <h3>1. Бренд-дизайн и айдентика</h3>
@@ -446,7 +450,8 @@
                 <p>Графическому дизайнеру требуется разнообразный набор технических навыков, которые можно измерить и проверить.</p>
                 
                 <div class="article-image-container">
-                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Навыки дизайнера.jpg" alt="Навыки и инструменты графического дизайнера" class="article-image" loading="lazy" decoding="async">
+                  <img src="./For site/04_blog_post/03_Classification of graphic designers/Заработная плата графических дизайнеров.jpg" alt="Навыки и инструменты графического дизайнера" class="article-image" loading="lazy" decoding="async">
+                  <div class="article-image-caption">Навыки и инструменты графического дизайнера</div>
                 </div>
 
                 <p><strong>Основные хард-скилы включают:</strong></p>
@@ -525,8 +530,7 @@
             <div class="article-section" id="salaries">
                 <h2>Заработная плата графических дизайнеров</h2>
                 <p>Доходы в профессии графического дизайнера варьируются в широких пределах и зависят от множества факторов: специализации, опыта, региона, типа занятости и конкретной индустрии.</p>
-                
-                <div class="article-image-container">
+                <div class="article-image-container" style="aspect-ratio:4.18;">
                   <img src="./For site/04_blog_post/03_Classification of graphic designers/Заработная плата графических дизайнеров.jpg" alt="Заработная плата графических дизайнеров" class="article-image" loading="lazy" decoding="async">
                 </div>
 

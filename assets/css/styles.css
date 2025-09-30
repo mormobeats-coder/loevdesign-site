@@ -451,6 +451,8 @@ body { padding-top: var(--header-h); }
 .header-inner{display:flex; align-items:center; justify-content:center; gap:16px; padding:0}
 .header-inner .nav{ margin-left:auto }
 .case-page .site-header .header-inner{ padding-left: 0; padding-right: 0; transform: translateX(-8px) }
+.case-page .site-header .header-inner{ padding-left: 0; padding-right: 0; transform: translateX(-8px) }
+@media (max-width: 768px){ .case-page .site-header .header-inner{ transform: none } }
 .site-header .logo{
   color: inherit;
   font-weight: 700;
