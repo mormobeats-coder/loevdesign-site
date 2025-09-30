@@ -105,7 +105,7 @@ pages/
 </nav>
 
 <!-- Измените логотип -->
-<a class="logo" href="./index.html#top">
+<a class="logo" href="/">
   <img src="./assets/img/new-logo.svg" alt="Новый логотип" />
   <span>Новое название</span>
 </a>
