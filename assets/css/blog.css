@@ -204,3 +204,24 @@
 .media-callout .content{ display:grid; gap:10px }
 .media-callout .content h4{ margin:0 }
 .media-callout .content p{ margin:0; color:var(--muted) }
+
+/* --- Article reactions & comments: refined styles --- */
+.article-reactions{ margin:24px 0 0; padding:16px; border-top:1px dashed var(--line); background:linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), transparent); border-radius:12px }
+.reactions-title{ color:var(--muted); font-size:14px; margin:0 0 12px }
+.reactions-list{ display:flex; gap:10px; flex-wrap:wrap }
+.reaction-btn{ display:inline-flex; align-items:center; gap:8px; cursor:pointer; padding:10px 14px; border-radius:999px; background:linear-gradient(180deg, color-mix(in oklab, var(--card) 88%, transparent), color-mix(in oklab, var(--bg) 96%, transparent)); border:1px solid var(--line); color:var(--text); user-select:none; transition:transform .08s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease }
+.reaction-btn:hover{ transform:translateY(-1px); border-color:var(--accent); box-shadow:0 4px 16px rgba(25,118,210,0.15) }
+.reaction-btn:active{ transform:translateY(0) }
+.reaction-btn:focus-visible{ outline:0; box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent) }
+.reaction-btn .count{ color:var(--muted); font-size:12px; padding:2px 6px; border-radius:999px; border:1px solid var(--line); background:color-mix(in oklab, var(--bg) 92%, transparent) }
+.reaction-btn[aria-pressed="true"]{ background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 24%, transparent), color-mix(in oklab, var(--card) 90%, transparent)); border-color:var(--accent); box-shadow:inset 0 1px 0 rgba(255,255,255,0.08) }
+
+/* Comments container */
+#article-comments{ border:1px solid var(--line); background:var(--card); border-radius:12px; padding:16px }
+#article-comments h3{ margin:0 0 12px; color:var(--text) }
+#article-comments .comment-form .btn{ padding:10px 12px }
+#article-comments input[type="text"],
+#article-comments textarea{ box-shadow:none; transition:box-shadow .2s ease, border-color .2s ease }
+#article-comments input[type="text"]:focus,
+#article-comments textarea:focus{ outline:0; border-color:var(--accent) !important; box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 28%, transparent) }
+#article-comments #comment-hint{ font-size:12px; color:var(--muted) }
