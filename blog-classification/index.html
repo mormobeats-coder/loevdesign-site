@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
   <script>
     try {
       var t = localStorage.getItem('theme');
@@ -11,6 +10,7 @@
       document.documentElement.setAttribute('data-theme', 'light');
     }
   </script>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark" />
   <title>Классификация графических дизайнеров: кто чем занимается и сколько зарабатывает — Loev Design</title>
@@ -19,14 +19,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Классификация графических дизайнеров: кто чем занимается и сколько зарабатывает — Loev Design" />
   <meta property="og:description" content="Обзор направлений графического дизайна, компетенций, уровней и доходов." />
-  <meta property="og:image" content="../For%20site/04_blog_post/03_Classification%20of%20graphic%20designers/Первая%20обложка%20статьи.png" />
+  <meta property="og:image" content="../For%20site/04_blog_post/Обложки%20статей/Classification.png" />
   <meta property="og:image:alt" content="Классификация графических дизайнеров" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Классификация графических дизайнеров: кто чем занимается и сколько зарабатывает — Loev Design" />
   <meta name="twitter:description" content="Обзор направлений, навыков и зарплат в графическом дизайне." />
-  <meta name="twitter:image" content="../For%20site/04_blog_post/03_Classification%20of%20graphic%20designers/Первая%20обложка%20статьи.png" />
+  <meta name="twitter:image" content="../For%20site/04_blog_post/Обложки%20статей/Classification.png" />
   <meta property="og:site_name" content="Loev Design" />
   <meta property="og:locale" content="ru_RU" />
   <link rel="canonical" href="https://loevdesign.ru/blog-classification/" />
@@ -83,22 +83,14 @@
     .article-image-caption { text-align: center; font-size: 14px; color: var(--muted); margin-top: 8px; }
     .article-image-container { 
       margin: 32px 0; 
-      position: relative;
       width: 100%;
-      background: var(--card);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      display:block;
     }
     .article-image-container .article-image { 
-      margin: 0; 
-      position: absolute;
-      top: 0;
-      left: 0;
+      display:block;
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: contain;
-      object-position: center;
     }
     /* Контейнеры с разными соотношениями сторон */
     .article-image-container.aspect-16-9 { aspect-ratio: 16/9; }
@@ -143,8 +135,9 @@
     @media (max-width: 900px){ .article-section{ scroll-margin-top: 120px } }
     @media (max-width: 600px){ .article-section{ scroll-margin-top: 126px } }
     @media (max-width: 1024px) { 
-      .article-layout { grid-template-columns: 1fr; gap: 24px; } 
-      .article-sidebar { position: static; max-height: none; } 
+      .article-layout { grid-template-columns: 1fr; gap: 24px; }
+      .article-sidebar { position: static; max-height: none; order: 2; }
+      .article-content { order: 1; }
       .article-title { font-size: 2rem; }
     }
     /* CTA + reactions */
@@ -218,20 +211,9 @@
       }
     }
     
-    /* Стили для изображений без пустых зон */
-    .article-image-container {
-      display: inline-block;
-      width: 100%;
-      max-width: 100%;
-    }
-    
-    .article-image-container .article-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-      object-fit: contain;
-    }
+    /* Стили для изображений: заполняем контейнер без пустых полей */
+    .article-image-container { display: inline-block; width: 100%; max-width: 100%; }
+    .article-image-container .article-image { display: block; border-radius: 8px; object-fit: cover !important; }
     
     .article-image-caption {
       margin-top: 8px;
@@ -310,9 +292,9 @@
   <main id="main" style="padding-top: 72px;">
     <article class="article">
       <div class="container">
-        <div class="article-layout" style="display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:start">
+        <div class="article-layout">
           <div class="article-content">
-            <a href="../blog/" class="back-to-blog">
+        <a href="../blog/" class="back-to-blog">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -327,9 +309,8 @@
               <h1 class="article-title">Классификация графических дизайнеров: кто чем занимается и сколько зарабатывает</h1>
               <p class="article-lead">Графический дизайн — это мощный инструмент визуальной коммуникации, который окружает нас повсюду: от узнаваемого логотипа на упаковке утреннего кофе до интуитивно понятного интерфейса в приложении на смартфоне.</p>
             </header>
-            <div class="article-cover">
-              <img src="../For%20site/04_blog_post/03_Classification%20of%20graphic%20designers/Первая%20обложка%20статьи.png" alt="Классификация графических дизайнеров" loading="eager" decoding="async">
-              <div class="article-image-caption">Классификация графических дизайнеров: направления, навыки и карьера</div>
+            <div class="article-image-container">
+              <img class="article-image" src="../For%20site/04_blog_post/03_Classification%20of%20graphic%20designers/Первая%20обложка%20статьи.png" alt="Классификация графических дизайнеров" loading="eager" decoding="async" />
             </div>
             <div class="article-body">
             <div class="article-section" id="intro">
@@ -344,8 +325,8 @@
               <div class="article-section" id="directions">
                 <h2>Основные направления графического дизайна</h2>
                 <p>Графический дизайн — многогранная профессия, которая делится на множество специализаций. Рассмотрим наиболее востребованные и перспективные направления.</p>
-                <div class="article-image-container" style="aspect-ratio:2.26;">
-                  <img src="../For%20site/04_blog_post/03_Classification%20of%20graphic%20designers/Навыки%20дизайнера.jpg" alt="Навыки и направления дизайна" class="article-image" loading="lazy" decoding="async">
+                <div class="article-image-container">
+                  <img src="../For%20site/04_blog_post/03_Classification%20of%20graphic%20designers/Направления%20дизайна.jpg" alt="Направления графического дизайна" class="article-image" loading="lazy" decoding="async">
                 </div>
 
                 <h3>1. Бренд-дизайн и айдентика</h3>
@@ -451,8 +432,7 @@
                 <p>Графическому дизайнеру требуется разнообразный набор технических навыков, которые можно измерить и проверить.</p>
                 
                 <div class="article-image-container">
-                  <img src="../For%20site/04_blog_post/03_Classification%20of%20graphic%20designers/Заработная%20плата%20графических%20дизайнеров.jpg" alt="Навыки и инструменты графического дизайнера" class="article-image" loading="lazy" decoding="async">
-                  <div class="article-image-caption">Навыки и инструменты графического дизайнера</div>
+                  <img src="../For%20site/04_blog_post/03_Classification%20of%20graphic%20designers/Навыки%20дизайнера.jpg" alt="Навыки и инструменты графического дизайнера" class="article-image" loading="lazy" decoding="async">
                 </div>
 
                 <p><strong>Основные хард-скилы включают:</strong></p>
@@ -526,6 +506,118 @@
                   <div role="cell" style="padding:12px;border-top:1px solid var(--line)">от 120 000 ₽</div>
                 </div>
               </div>
+              
+            </div>
+
+            <div class="article-section" id="salaries">
+                <h2>Заработная плата графических дизайнеров</h2>
+                <p>Доходы в профессии графического дизайнера варьируются в широких пределах и зависят от множества факторов: специализации, опыта, региона, типа занятости и конкретной индустрии.</p>
+                <div class="article-image-container">
+                  <img src="../For%20site/04_blog_post/03_Classification%20of%20graphic%20designers/Заработная%20плата%20графических%20дизайнеров.jpg" alt="Заработная плата графических дизайнеров" class="article-image" loading="lazy" decoding="async">
+                </div>
+
+                <h3>Зарплаты в России</h3>
+                <p>Средняя зарплата графического дизайнера в России составляет около 74 000 рублей в месяц. Однако разброс по регионам достаточно значительный:</p>
+                <ul>
+                  <li><strong>Москва</strong> — от 30 000 до 110 000 рублей</li>
+                  <li><strong>Санкт-Петербург</strong> — от 30 000 до 94 000 рублей</li>
+                  <li><strong>Новосибирск</strong> — от 30 000 до 80 000 рублей</li>
+                  <li><strong>Краснодар</strong> — от 19 000 до 75 000 рублей</li>
+                  <li><strong>Хабаровск</strong> — от 30 000 до 55 000 рублей</li>
+                </ul>
+
+                <p>Начинающие специалисты в Москве могут рассчитывать на доход от 50 000 до 60 000 рублей, в то время как профессионалы уровня senior получают от 80 000 рублей и выше. Арт-директора и руководители отделов зарабатывают от 120 000 рублей.</p>
+
+                <h3>Зарплаты по специализациям</h3>
+                <p>Доходы также сильно различаются в зависимости от направления дизайна:</p>
+                <ul>
+                  <li><strong>Веб-дизайнер</strong> — от 60 000 до 100 000 рублей в месяц</li>
+                  <li><strong>UI/UX-дизайнер</strong> — от 50 000 до 135 000 рублей</li>
+                  <li><strong>Моушн-дизайнер</strong> — от 50 000 до 105 000 рублей</li>
+                  <li><strong>Бренд-дизайнер</strong> — от 60 000 до 90 000 рублей</li>
+                  <li><strong>3D-дизайнер</strong> — от 55 000 до 70 000 рублей</li>
+              </ul>
+
+                <h3>Зарплаты в мире</h3>
+                <p>Глобальный рынок предлагает различные уровни дохода в зависимости от страны:</p>
+                <ul>
+                  <li><strong>США</strong> — около $69 000 в год</li>
+                  <li><strong>Германия</strong> — около $60 000 в год</li>
+                  <li><strong>Дания</strong> — около $71 000 в год</li>
+                  <li><strong>Канада</strong> — около $58 000 в год</li>
+                  <li><strong>ОАЭ</strong> — около $54 000 в год</li>
+                  <li><strong>Китай</strong> — около $12 000 в год</li>
+                  <li><strong>Индия</strong> — около $4 000 в год</li>
+              </ul>
+            </div>
+
+            <div class="article-section" id="workplaces">
+                <h2>Где работают графические дизайнеры и форматы занятости</h2>
+                <p>Современный графический дизайнер имеет несколько вариантов построения карьеры, каждый из которых обладает своими преимуществами и особенностями.</p>
+
+                <h3>Работа в штате компании</h3>
+                <p>Дизайнер работает исключительно на одного employer, выполняя задачи от коллег внутри организации. Такой формат обеспечивает стабильность, социальные гарантии и глубокое погружение в специфику одного бренда. Однако круг задач может быть ограниченным.</p>
+
+                <h3>Работа в дизайн-студии или агентстве</h3>
+                <p>Агентства выполняют заказы для разных клиентов, что обеспечивает разнообразие проектов и возможность быстрого профессионального роста. Дизайнер в агентстве обычно специализируется на определенном типе задач (например, digital-реклама или брендинг), но работает с разными клиентами.</p>
+
+                <h3>Фриланс (самозанятость)</h3>
+                <p>Самостоятельный поиск заказчиков и работа на себя. Фриланс предоставляет максимальную свободу в выборе проектов и графике работы, но требует развитых навыков самоорганизации и умения продавать свои услуги. На фрилансе доход полностью зависит от объема работы, опыта специалиста и его портфолио.</p>
+
+              <h3>Удаленная работа</h3>
+                <p>Многие компании нанимают дизайнеров на удаленку, что стирает географические границы. Специалист из региона может работать на столичного или даже зарубежного заказчика. Для этого требуется только хороший компьютер, графический планшет и стабильный интернет.</p>
+            </div>
+
+            <div class="article-section" id="proscons">
+                <h2>Плюсы и минусы профессии графического дизайнера</h2>
+                <p>Как и любая профессия, графический дизайн имеет свои сильные и слабые стороны, которые важно учитывать при выборе карьерного пути.</p>
+
+                <h3>Преимущества ✅</h3>
+                <ul>
+                  <li><strong>Востребованность</strong> — бизнесу постоянно нужны визуальные решения для продвижения товаров и услуг. Согласно исследованиям, значимость визуальной информации для пользователей будет только расти, что поддерживает спрос на специалистов.</li>
+                  <li><strong>Возможность работать удаленно</strong> — дизайнер может работать из любой точки мира, где есть интернет. Это открывает возможности для путешествий и жизни в комфортной среде.</li>
+                  <li><strong>Творческая реализация</strong> — профессия позволяет раскрывать творческий потенциал, экспериментировать с формой, цветом и композицией, видеть, как проекты влияют на восприятие людей.</li>
+                  <li><strong>Перспективы роста</strong> — можно дорасти до арт-директора, открыть собственную студию или стать T-shaped экспертом со знаниями в смежных областях.</li>
+                  <li><strong>Разнообразие проектов</strong> — в зависимости от специализации можно работать с брендами из разных индустрий, создавая упаковку, интерфейсы, анимацию или полиграфию.</li>
+              </ul>
+
+                <h3>Недостатки ❌</h3>
+                <ul>
+                  <li><strong>Высокая конкуренция</strong> — особенно на уровне начинающих специалистов. Чтобы выделиться, нужно сильное портфолио и умение предлагать креативные решения, а не просто выполнять технические задания.</li>
+                  <li><strong>Субъективность оценок</strong> — восприятие дизайна часто субъективно, что может приводить к недопониманию с заказчиками. Дизайнеру важно уметь аргументировать свои решения и объяснять их пользу для бизнеса.</li>
+                  <li><strong>Необходимость постоянного обучения</strong> — тренды, программы и технологии в дизайне быстро меняются, требую регулярного обновления знаний и навыков.</li>
+                  <li><strong>Рутинные задачи</strong> — далеко не все задачи связаны с творчеством и креативом. Значительная часть работы техническая и требует скрупулезности.</li>
+                  <li><strong>Ненормированный рабочий день</strong> — особенно на фрилансе или в период сдачи проектов, когда приходится работать в условиях жестких дедлайнов.</li>
+              </ul>
+            </div>
+
+            <div class="article-section" id="education">
+                <h2>Как стать графическим дизайнером: пути обучения</h2>
+                <p>Существует несколько форматов получения профессии, каждый из которых подходит для разных ситуаций и целей.</p>
+
+              <h3>Высшее образование</h3>
+                <p>Обучение в вузе длится 4-6 лет и дает фундаментальную подготовку, диплом государственного образца и глубокое погружение в теорию искусства и дизайна. Этот вариант оптимален для выпускников школ, которым важен диплом и полноценное академическое образование.</p>
+
+                <h3>Колледж или техникум</h3>
+                <p>Учеба длится от 2 лет 10 месяцев до 3,5 лет. Конкурс меньше, чем в вузах, но вы получите хорошую базу для развития в выбранной сфере. Учиться можно после 9 или 11 класса.</p>
+
+                <h3>Онлайн-курсы</h3>
+                <p>Современный и эффективный формат получения профессии с нуля или повышения квалификации. Обучение длится от нескольких месяцев до года, обычно включает практические задания и формирование портфолио. Ключевое преимущество — возможность учиться у практикующих специалистов и осваивать именно те навыки, которые востребованы на рынке.</p>
+
+              <h3>Самообразование</h3>
+                <p>Бесплатный путь, который включает изучение учебников, статей, видеоуроков и других материалов в открытом доступе. Подходит для тех, кто еще не уверен в выборе профессии или хочет попробовать свои силы перед оплатой курсов. Однако требует высокой самоорганизации, и вы не получите диплома или системной обратной связи от профессионалов.</p>
+            </div>
+
+            <div class="article-section" id="conclusion">
+                <h2>Заключение: будущее профессии графического дизайнера</h2>
+                <p>Графический дизайн — это динамичная и многогранная профессия, которая продолжает развиваться вместе с технологиями и обществом. Визуальная коммуникация становится все более важной в мире переизбытка информации, а значит, потребность в качественном дизайне будет только расти.</p>
+
+                <p>Будущее профессии связано с цифровизацией, развитием искусственного интеллекта и новых форматов взаимодействия. Уже сегодня мы видим, как традиционная печатная продукция уступает место цифровым носителям. Моушн-дизайн, интерфейсы для виртуальной и дополненной реальности, интерактивные инсталляции — все это открывает новые горизонты для графических дизайнеров.</p>
+
+                <p>Несмотря на рост конкуренции, хорошие специалисты, способные предлагать креативные решения и глубоко понимать задачи бизнеса, будут всегда в цене. Как отмечает Дмитрий Краснов, куратор программ по графическому дизайну: "У хороших графических дизайнеров конкурентов-то и нет по сути. За них еще будут конкурировать как частные заказчики, так и компании".</p>
+
+                <p>Выбирая специализацию в графическом дизайне, ориентируйтесь не только на текущую востребованность и уровень доходов, но и на свои интересы и сильные стороны. Любовь к своей работе и постоянное развитие — главные слагаемые успеха в этой творческой и многогранной профессии.</p>
+              </div>
               <div class="article-section" id="cta">
                 <div class="article-cta">
                   <div>
@@ -537,6 +629,7 @@
                   </div>
                   <div class="cta-note">Нажмите и присоединяйтесь к каналу</div>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -569,23 +662,23 @@
           <p>Расскажите о задаче — предложу варианты и сроки уже сегодня</p>
         </div>
         <div class="footer-cta-actions">
-          <a href="/#contact" class="btn btn--primary" data-open-contact>Оставить заявку</a>
+          <a href="../index.html#contact" class="btn btn--primary" data-open-contact>Оставить заявку</a>
           <a href="mailto:loevstudio@gmail.com" class="btn btn--ghost">Написать на email</a>
         </div>
       </div>
 
       <div class="footer-inner">
         <div class="footer-left">
-          <a class="logo" href="/">
-            <img src="../For%20site/01_logo/лого%20новый.svg" alt="Логотип" width="28" height="28" />
+          <a class="logo" href="../index.html#top">
+            <img src="../For site/01_logo/лого новый.svg" alt="Логотип" width="28" height="28" />
           </a>
           <p>© 2025 Loev Design. Все права защищены.</p>
         </div>
         <div class="footer-right">
           <a href="mailto:loevstudio@gmail.com">loevstudio@gmail.com</a>
           <a href="tel:+79952247076">+7 995 224‑70‑76</a>
-          <a href="/#services">Услуги</a>
-          <a href="/#cases">Портфолио</a>
+          <a href="../index.html#services">Услуги</a>
+          <a href="../index.html#cases">Портфолио</a>
         </div>
       </div>
     </div>
@@ -646,6 +739,96 @@
     }
     window.addEventListener('scroll', updateReadingProgress);
     updateReadingProgress();
+  </script>
+  <script>
+    (function(){
+      try{
+        // Reactions (persist per article path)
+        var keyBase = 'articleReactions:' + location.pathname;
+        var saved = JSON.parse(localStorage.getItem(keyBase) || '{}');
+        var chosen = localStorage.getItem(keyBase+':chosen') || '';
+        var known = ['like','love','mindblown','sleepy','dislike'];
+        known.forEach(function(k){ if(typeof saved[k] !== 'number') saved[k] = 0; });
+        document.querySelectorAll('#article-reactions .reaction-btn').forEach(function(btn){
+          var type = btn.getAttribute('data-reaction');
+          var countEl = btn.querySelector('.count');
+          countEl.textContent = String(saved[type]||0);
+          if(chosen === type){ btn.setAttribute('aria-pressed','true'); }
+          btn.addEventListener('click', function(){
+            var currentChosen = localStorage.getItem(keyBase+':chosen') || '';
+            if(currentChosen && currentChosen !== type){
+              var prev = document.querySelector('#article-reactions .reaction-btn[data-reaction="'+currentChosen+'"]');
+              if(prev){ prev.setAttribute('aria-pressed','false'); }
+              if(saved[currentChosen] > 0){ saved[currentChosen] = saved[currentChosen] - 1; }
+            }
+            var nowPressed = btn.getAttribute('aria-pressed') === 'true';
+            if(nowPressed){
+              btn.setAttribute('aria-pressed','false');
+              saved[type] = Math.max(0, (saved[type]||0) - 1);
+              localStorage.removeItem(keyBase+':chosen');
+            } else {
+              btn.setAttribute('aria-pressed','true');
+              saved[type] = (saved[type]||0) + 1;
+              localStorage.setItem(keyBase+':chosen', type);
+            }
+            localStorage.setItem(keyBase, JSON.stringify(saved));
+            document.querySelectorAll('#article-reactions .reaction-btn').forEach(function(b){
+              var t = b.getAttribute('data-reaction');
+              var c = b.querySelector('.count');
+              c.textContent = String(saved[t]||0);
+            });
+          });
+        });
+
+        // Comments (local, per article)
+        var commentsKey = 'articleComments:' + location.pathname;
+        var nickKey = 'articleCommentsNick';
+        var comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+        var nickInput = document.getElementById('comment-nick');
+        var nickSaved = localStorage.getItem(nickKey) || '';
+        if(nickInput) nickInput.value = nickSaved;
+        function renderComments(){
+          var list = document.getElementById('comment-list');
+          if(!list) return;
+          list.innerHTML = '';
+          comments.forEach(function(item){
+            var el = document.createElement('div');
+            el.setAttribute('style','border:1px solid var(--line); background:var(--card); border-radius:12px; padding:12px');
+            var name = document.createElement('div');
+            name.setAttribute('style','font-weight:600; color:var(--text); margin-bottom:6px');
+            name.textContent = item.nick || 'Гость';
+            var text = document.createElement('div');
+            text.setAttribute('style','color:var(--muted); white-space:pre-wrap');
+            text.textContent = item.text || '';
+            var meta = document.createElement('div');
+            meta.setAttribute('style','font-size:12px; color:var(--muted); margin-top:6px');
+            meta.textContent = item.createdAt ? new Date(item.createdAt).toLocaleString() : '';
+            el.appendChild(name); el.appendChild(text); el.appendChild(meta);
+            list.appendChild(el);
+          });
+        }
+        renderComments();
+        var saveNickBtn = document.getElementById('save-nick');
+        if(saveNickBtn){ saveNickBtn.addEventListener('click', function(){
+          var v = (nickInput && nickInput.value || '').trim();
+          localStorage.setItem(nickKey, v);
+        }); }
+        var addBtn = document.getElementById('add-comment');
+        var textEl = document.getElementById('comment-text');
+        if(addBtn && textEl){
+          addBtn.addEventListener('click', function(){
+            var txt = (textEl.value||'').trim();
+            if(!txt) return;
+            var nick = (nickInput && nickInput.value || '').trim() || 'Гость';
+            var item = { nick: nick, text: txt, createdAt: Date.now() };
+            comments.push(item);
+            localStorage.setItem(commentsKey, JSON.stringify(comments));
+            textEl.value = '';
+            renderComments();
+          });
+        }
+      }catch(e){}
+    })();
   </script>
   
 </body>
