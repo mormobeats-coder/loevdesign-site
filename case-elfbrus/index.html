@@ -6,9 +6,41 @@
   <meta name="color-scheme" content="dark" />
   <title>Elfbrus — Кейс по брендингу | Loev Design</title>
   <meta name="description" content="Кейс по созданию брендинга для Elfbrus: логотип, аватары, посты для социальных сетей, баннеры и билборды." />
-  <meta name="theme-color" content="#1976d2" />
+  <meta name="theme-color" content="#58AF08" />
   <style>
-    :root { --bg: #0b0b0e; --text: #f5f7fb; --muted: #a8b0be; --line: #202534; --card: #11131b; --accent: #1976d2; --accent-2: #1565c0; }
+    :root { --bg: #0b0b0e; --text: #f5f7fb; --muted: #a8b0be; --line: #202534; --card: #11131b; --accent: #58AF08; --accent-2: #2AC0D0; }
+    html[data-theme="dark"], :root[data-theme="dark"], .case-page { --accent: #58AF08 !important; --accent-2: #2AC0D0 !important; }
+    /* Кнопка в шапке */
+    .case-page .site-header .btn--primary,
+    .case-page .site-header .btn--primary:link,
+    .case-page .site-header .btn--primary:visited { background: var(--accent) !important; border-color: var(--accent) !important; color:#fff !important; }
+    .case-page .site-header .btn--primary *,
+    .case-page .site-header .btn--primary > span { color:#fff !important; fill:#fff !important; }
+    /* Общие кнопки */
+    .case-page .btn.btn--primary { background: var(--accent) !important; border-color: var(--accent) !important; color:#0b0b0e !important; }
+    .case-page .btn.btn--primary:hover { filter: brightness(1.05) !important; }
+    /* Ссылки и ховеры */
+    .case-page .nav a:hover, .case-page .footer-right a:hover, .case-page a:hover { color: var(--accent) !important; }
+    /* Акцентные элементы */
+    .case-page .info-icon, .case-page .feature-icon, .case-page .tool-icon, .case-page .result-icon, .case-page .achievement-icon { color: var(--accent) !important; }
+    .case-page .project-info-card::before, .case-page .feature-card::before, .case-page .tool-card::before, .case-page .result-card::before { background: var(--accent) !important; }
+    .case-page .toc a.active, .case-page .toc a:hover { background: rgba(88,175,8,0.15) !important; color: #fff !important; }
+    .case-page .pair-header { background: linear-gradient(135deg, rgba(88,175,8,.10), rgba(42,192,208,.08)) !important; }
+    .case-page .pair-figure::after { background: linear-gradient(90deg, transparent, rgba(88,175,8,0.4), transparent) !important; }
+    .case-page .project-info-card:hover { box-shadow: 0 12px 32px rgba(88,175,8,0.15) !important; border-color: rgba(88,175,8,0.3) !important; }
+    .case-page .feature-card:hover { box-shadow: 0 16px 40px rgba(88,175,8,0.15) !important; border-color: rgba(88,175,8,0.3) !important; }
+    .case-page .tile:hover { box-shadow: 0 8px 32px rgba(88,175,8,0.25) !important; }
+    .case-page .result-card:hover { box-shadow: 0 12px 32px rgba(88,175,8,0.15) !important; border-color: rgba(88,175,8,0.3) !important; }
+    .case-page .benefit-item:hover { box-shadow: 0 8px 24px rgba(88,175,8,0.10) !important; border-color: var(--accent) !important; }
+    .case-page .stat-item:hover { box-shadow: 0 6px 20px rgba(88,175,8,0.15) !important; border-color: var(--accent) !important; }
+    .case-page .overview-title { background: linear-gradient(135deg, var(--text), var(--accent)) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
+    .case-page .project-info-card h4, .case-page .features-section h3, .case-page .section-title { color: var(--accent) !important; }
+    .case-page .project-info-card svg, .case-page .feature-card svg { stroke: var(--accent) !important; }
+    /* Лёгкая зелёная подложка */
+    .case-page { background: radial-gradient(1000px 700px at calc(-10% + var(--bg-parallax-x, 0)) calc(-20% + var(--bg-parallax-y, 0)), rgba(88,175,8,0.06), transparent 65%),
+                           radial-gradient(800px 600px at calc(110% + var(--bg-parallax-x, 0)) calc(-10% + var(--bg-parallax-y, 0)), rgba(42,192,208,0.04), transparent 60%),
+                           radial-gradient(600px 500px at calc(50% + var(--bg-parallax-x, 0)) calc(90% + var(--bg-parallax-y, 0)), rgba(90,200,120,0.03), transparent 55%),
+                           var(--bg) !important; }
   </style>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Elfbrus — Кейс по брендингу | Loev Design" />
