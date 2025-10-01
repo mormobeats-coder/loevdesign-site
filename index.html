@@ -193,6 +193,16 @@
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/104304944" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
+  <style>
+    .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;display:none}
+    .cookie-banner__inner{max-width:960px;margin:0 auto;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+    .cookie-banner__content{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .cookie-banner__text{font-size:14px;line-height:1.5;color:var(--muted)}
+    .cookie-banner__actions{display:flex;gap:8px}
+    .cookie-btn{appearance:none;border:1px solid var(--line);background:linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);color:#fff;border-radius:12px;padding:10px 14px;font-weight:600}
+    .cookie-btn--ghost{background:transparent;color:var(--text)}
+    @media (max-width: 640px){.cookie-banner__content{flex-direction:column;align-items:stretch}.cookie-banner__actions{width:100%}.cookie-btn{width:100%}}
+  </style>
 </head>
  <body>
   <div class="bg-aurora" aria-hidden="true">
@@ -1341,5 +1351,30 @@
   });
 })();
 </script>
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Согласие на использование файлов cookie">
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__content">
+        <div class="cookie-banner__text">Мы используем cookies для улучшения работы сайта и аналитики. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="#" style="color:var(--text);text-decoration:underline">политикой</a>.</div>
+        <div class="cookie-banner__actions">
+          <button class="cookie-btn" id="cookie-accept">Согласен</button>
+          <button class="cookie-btn cookie-btn--ghost" id="cookie-decline">Отказаться</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var key='cookie_consent_v1';
+      var banner=document.getElementById('cookie-banner');
+      var accepted=localStorage.getItem(key);
+      function hide(){banner.style.display='none'}
+      function show(){banner.style.display='block'}
+      if(!accepted){show()} else {hide()}
+      var acc=document.getElementById('cookie-accept');
+      var dec=document.getElementById('cookie-decline');
+      if(acc){acc.addEventListener('click',function(){localStorage.setItem(key,'accepted');hide()})}
+      if(dec){dec.addEventListener('click',function(){localStorage.setItem(key,'declined');hide()})}
+    })();
+  </script>
 </body>
 </html>
