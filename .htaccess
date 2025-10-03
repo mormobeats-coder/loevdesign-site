@@ -1,25 +1,52 @@
-# Удаление расширений .html из URL
+# Включаем mod_rewrite
 RewriteEngine On
 
-# Избежать конфликтов с MultiViews/Indexes, которые могут вызывать 403
-Options -MultiViews
-Options -Indexes
+# Редиректы 301 для старых URL с .html на чистые URL
+# Главные страницы
+RedirectMatch 301 ^/case\.html$ /case
+RedirectMatch 301 ^/showreel\.html$ /showreel
+RedirectMatch 301 ^/blog\.html$ /blog
+RedirectMatch 301 ^/privacy\.html$ /privacy
 
-# Явно указываем файл по умолчанию и корень
-DirectoryIndex index.html
-RewriteRule ^$ index.html [L]
+# Кейсы
+RedirectMatch 301 ^/case-rockot\.html$ /case-rockot
+RedirectMatch 301 ^/case-elfbrus\.html$ /case-elfbrus
 
-# Перенаправляем внешние запросы с .html на URL без расширения (301)
-RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
-RewriteRule ^ %1 [R=301,L,NE]
+# Статьи блога
+RedirectMatch 301 ^/blog-classification\.html$ /blog-classification
+RedirectMatch 301 ^/blog-papa-brenda\.html$ /blog-papa-brenda
+RedirectMatch 301 ^/blog-post\.html$ /post-o-cvetah-v-dizaine
 
-# Внутренне обслуживаем URL без расширения, если существует соответствующий .html
+# СММ бот (если был старый URL)
+RedirectMatch 301 ^/loev-bot\.html$ /loev-bot
+
+# Убираем .html из всех URL (универсальное правило)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.+)$ $1.html [L]
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
-# Кэширование статических файлов
+# Принудительное удаление .html из URL в браузере
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
+# Настройки безопасности
+# Запрещаем доступ к служебным файлам
+<Files ".htaccess">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "*.md">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "*.txt">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Настройки кэширования
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType text/css "access plus 1 month"
@@ -30,11 +57,9 @@ RewriteRule ^(.+)$ $1.html [L]
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType font/woff "access plus 1 year"
-    ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
-# Сжатие файлов
+# Сжатие
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
@@ -45,11 +70,4 @@ RewriteRule ^(.+)$ $1.html [L]
     AddOutputFilterByType DEFLATE application/rss+xml
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/x-javascript
-</IfModule>
-
-# Безопасность
-<IfModule mod_headers.c>
-    Header always set X-Content-Type-Options nosniff
-    Header always set X-Frame-Options DENY
-    Header always set X-XSS-Protection "1; mode=block"
 </IfModule>
