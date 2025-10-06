@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <script>
+    // Force dark theme immediately
+    document.documentElement.setAttribute('data-theme', 'dark');
+    try {
+      var t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch(e){
+      // Keep dark theme
+    }
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <title>Loev smm бот - Генератор контент-планов | Loev Design</title>
+  <meta name="description" content="Создайте контент-план на неделю с помощью ИИ. Генератор постов для соцсетей с визуальными идеями и советами для SMM-специалистов." />
+  <meta name="keywords" content="SMM бот, контент-план, генератор постов, ИИ, социальные сети, маркетинг" />
+  <meta name="author" content="Loev Design" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Loev smm бот - Генератор контент-планов" />
+  <meta property="og:description" content="Создайте контент-план на неделю с помощью ИИ. Генератор постов для соцсетей с визуальными идеями и советами для SMM-специалистов." />
+  <meta property="og:image" content="https://loevdesign.ru/For%20site/01_logo/social-preview.png?v=1" />
+  <meta property="og:url" content="https://loevdesign.ru/loev-bot" />
+  <meta property="og:site_name" content="Loev Design" />
+  <meta property="og:locale" content="ru_RU" />
+  
+  <link rel="apple-touch-icon" href="../For site/01_logo/icons logo.svg" />
+  <link rel="manifest" href="../assets/manifest.webmanifest" crossorigin="use-credentials" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Load main CSS synchronously to ensure proper width -->
+  <link rel="stylesheet" href="../assets/css/styles.css?v=72">
+  
+  <style>
+    /* Force dark theme immediately */
+    :root[data-theme="dark"] {
+      --bg: #0b0b0e !important;
+      --text: #f5f7fb !important;
+      --muted: #a8b0be !important;
+      --line: #202534 !important;
+      --card: #11131b !important;
+      --accent: #2d6ae3 !important;
+      --accent-2: #1e4fb8 !important;
+    }
+    body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
+    }
+    .hero, .section, .case, .portfolio-showcase, .benefits-container, .work-flow-container, .faq-container {
+      background: var(--bg) !important;
+    }
+    .reviews-container {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    }
+    .hero .display, .hero .lead, .section h2, .section h3, .case h3, .case p {
+      color: var(--text) !important;
+    }
+    
+    /* Force hero elements to be visible on mobile */
+    @media (max-width: 768px) {
+      .hero .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .hero .reveal--hero {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      
+      /* Force section titles to be visible on mobile */
+      .section-title.reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+    
+    /* Fix benefits container background - override main CSS */
+    .benefits-flow-faq-container {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    
+    .benefits-flow-faq-container::before {
+      display: none !important;
+    }
+    
+    .benefits-container {
+      background: transparent !important;
+      margin-bottom: 0 !important;
+    }
+    
+    .section--alt {
+      background: transparent !important;
+    }
+    
+    .section--alt::before {
+      display: none !important;
+    }
+    
+    .section--alt::after {
+      display: none !important;
+    }
+    
+    /* Remove any background from benefits section */
+    #benefits-flow-faq {
+      background: transparent !important;
+    }
+    
+    #benefits-flow-faq::before {
+      display: none !important;
+    }
+    
+    #benefits-flow-faq::after {
+      display: none !important;
+    }
+    
+    /* Ensure cards have proper background */
+    .benefit-item {
+      background: var(--card) !important;
+    }
+    
+    /* Mobile specific fixes for reviews section - move content higher */
+    @media (max-width: 480px) {
+      .reviews-container {
+        padding-top: 0 !important;
+        padding-bottom: 40px !important;
+      }
+      .reviews-content {
+        margin-top: -40px !important;
+      }
+      .reviews-content .btn {
+        margin-bottom: 40px !important;
+      }
+    }
+    
+    /* Remove all width overrides - let main CSS handle it */
+    
+    /* Удалены локальные стили шапки: используется оформление из общего styles.css */
+    
+  </style>
+  
+  
+  <style>
+    /* Только уникальные стили для бота */
+    .page-header { 
+      text-align: center; 
+      margin-bottom: 24px; 
+      padding: 64px 0 28px; 
+    }
+    .page-title { 
+      font-size: 3rem; 
+      font-weight: 800; 
+      color: var(--text); 
+      margin-bottom: 20px; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text; 
+    }
+    .page-subtitle { 
+      font-size: 1.2rem; 
+      color: var(--muted); 
+      margin-bottom: 16px; 
+    }
+    .bot-container { 
+      background: var(--card); 
+      border-radius: 20px; 
+      padding: 40px; 
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); 
+      margin-bottom: 60px; 
+      border: 1px solid var(--line); 
+    }
+    .form-group { margin-bottom: 25px; }
+    .form-label { display: block; font-weight: 600; color: var(--text); margin-bottom: 12px; font-size: 1.1rem; }
+    .form-input { width: 100%; padding: 16px 20px; border: 2px solid var(--line); border-radius: 12px; font-size: 16px; transition: all 0.3s ease; resize: vertical; min-height: 120px; font-family: inherit; background: var(--bg); color: var(--text); }
+    .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45, 106, 227, 0.1); }
+    .form-input::placeholder { color: var(--muted); }
+    .btn-group { display: flex; gap: 15px; flex-wrap: wrap; }
+    .bot-container .btn, .btn-group .btn { padding: 16px 32px; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+    .bot-container .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .bot-container .btn:not(:disabled) { opacity: 1; }
+    .bot-container .btn-primary { 
+      background: linear-gradient(135deg, #667eea, #764ba2); 
+      color: white; 
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .bot-container .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    .bot-container .btn-primary:hover:not(:disabled) { 
+      background: linear-gradient(135deg, #5a67d8, #6b46c1);
+      box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+    }
+    .bot-container .btn-primary:hover:not(:disabled)::before {
+      left: 100%;
+    }
+    .bot-container .btn-primary:active:not(:disabled) {
+      transform: scale(0.98);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    .bot-container .btn-secondary { background: var(--card); color: var(--text); border: 2px solid var(--line); }
+    .bot-container .btn-secondary:hover:not(:disabled) { background: var(--line); transform: translateY(-1px); }
+    .bot-container .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+    .status { padding: 16px 20px; border-radius: 12px; margin: 20px 0; font-weight: 500; display: none; }
+    .status.info { background: rgba(45, 106, 227, 0.1); color: var(--accent); border-left: 4px solid var(--accent); }
+    .status.success { background: rgba(34, 197, 94, 0.1); color: #22c55e; border-left: 4px solid #22c55e; }
+    .status.error { background: rgba(239, 68, 68, 0.1); color: #ef4444; border-left: 4px solid #ef4444; }
+    .hint { 
+      background: linear-gradient(135deg, rgba(45, 106, 227, 0.1), rgba(118, 75, 162, 0.1)); 
+      padding: 30px; 
+      border-radius: 16px; 
+      margin: 40px 0; 
+      border-left: 5px solid var(--accent); 
+    }
+    .hint-title { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .hint-content { color: var(--muted); line-height: 1.6; }
+    .hint-list { list-style: none; margin-top: 15px; }
+    .hint-list li { padding: 8px 0; position: relative; padding-left: 25px; }
+    .hint-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+    .content-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+      gap: 30px; 
+      margin: 60px 0; 
+    }
+    .content-card { background: var(--card); border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden; border: 1px solid var(--line); }
+    .content-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .day-badge { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; }
+    .format-badge { background: rgba(45, 106, 227, 0.1); color: var(--accent); padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: 500; }
+    .card-title { font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 15px; line-height: 1.4; }
+    .card-content { margin-bottom: 20px; }
+    .post-text { background: var(--bg); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent); line-height: 1.7; font-size: 15px; color: var(--text); white-space: pre-wrap; word-wrap: break-word; }
+    .card-meta { margin: 15px 0; }
+    .meta-item { background: rgba(45, 106, 227, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid var(--accent); }
+    .meta-item.visual { background: rgba(255, 152, 0, 0.1); border-left-color: #ff9800; }
+    .meta-item.tips { background: rgba(34, 197, 94, 0.1); border-left-color: #22c55e; }
+    .meta-label { font-weight: 600; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .meta-content { color: var(--muted); line-height: 1.5; white-space: pre-line; }
+    .card-actions { margin-top: 20px; }
+    
+    /* Улучшенные разделители для визуальных идей и советов */
+    .visual-section, .tips-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px solid var(--line);
+      position: relative;
+    }
+    
+    .visual-section::before, .tips-section::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+    }
+    
+    .visual-label, .tips-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .visual-text, .tips-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      white-space: pre-line;
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Специальные стили для разных типов контента */
+    .visual-text {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(168, 85, 247, 0.05) 100%);
+      border-color: rgba(99, 102, 241, 0.3);
+      border-left: 4px solid var(--accent);
+    }
+    
+    .tips-text {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(16, 185, 129, 0.05) 100%);
+      border-color: rgba(34, 197, 94, 0.3);
+      border-left: 4px solid #22c55e;
+    }
+    
+    /* Улучшенные стили для карточек */
+    .content-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    
+    .content-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    
+    .content-card:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    
+    .post-text {
+      background: var(--bg);
+      padding: 24px;
+      border-radius: 16px;
+      border-left: 4px solid var(--accent);
+      line-height: 1.8;
+      font-size: 15px;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .copy-btn { width: 100%; background: linear-gradient(135deg, #22c55e, #16a34a); color: white; border: none; padding: 14px 20px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .copy-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3); }
+    .copy-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .loading { 
+      display: none !important; 
+      text-align: center; 
+      padding: 60px 40px; 
+      background: var(--card);
+      border-radius: 16px;
+      margin: 20px 0;
+      border: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+    .loading.show { 
+      display: block !important; 
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .loading-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--line);
+      border-top: 4px solid var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite !important;
+      display: block !important;
+    }
+    
+    .loading-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    
+    .loading-dots {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    
+    .loading-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+    
+    @keyframes spin { 
+      0% { transform: rotate(0deg); } 
+      100% { transform: rotate(360deg); } 
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    
+    /* Тарифные планы */
+    .pricing-section {
+      margin: 80px 0;
+      padding: 60px 0;
+      background: linear-gradient(135deg, rgba(15, 15, 22, 0.8) 0%, rgba(17, 19, 27, 0.9) 100%);
+      border-radius: 24px;
+      border: 1px solid var(--line);
+    }
+    
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 50px;
+      max-width: 920px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 16px;
+    }
+    
+    .pricing-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .pricing-subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+      max-width: 840px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .pricing-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 40px 30px;
+      border: 2px solid var(--line);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pricing-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 16px 48px rgba(45, 106, 227, 0.12);
+    }
+    
+    .pricing-card.popular {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(45, 106, 227, 0.05) 0%, rgba(30, 79, 184, 0.05) 100%);
+      transform: scale(1.05);
+    }
+    
+    .pricing-card.popular::before {
+      content: 'Популярный';
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      background: var(--accent);
+      color: white;
+      padding: 8px 40px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transform: rotate(45deg);
+    }
+    
+    .pricing-card-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .pricing-card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    
+    .pricing-card-posts {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    
+    .pricing-card-price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    
+    .pricing-card-currency {
+      font-size: 1.2rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    
+    .pricing-card-features {
+      list-style: none;
+      padding: 0;
+      margin: 30px 0;
+    }
+    
+    .pricing-card-features li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+    }
+    
+    .pricing-card-features li:last-child {
+      border-bottom: none;
+    }
+    
+    .pricing-card-features li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .pricing-card-cta {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      border: none;
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    
+    .pricing-card-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(45, 106, 227, 0.3);
+    }
+    
+    .pricing-card-cta.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--line);
+    }
+    
+    .pricing-card-cta.secondary:hover {
+      border-color: var(--accent);
+      background: rgba(45, 106, 227, 0.1);
+    }
+    
+    /* Пример идеального промта */
+    .prompt-example {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(118, 75, 162, 0.06));
+      border: 1px solid color-mix(in oklab, var(--accent) 35%, var(--line));
+      border-radius: 16px;
+      padding: 28px;
+      margin: 50px 0;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+      text-align: left; /* ensure inner text aligns left */
+    }
+    
+    /* Убраны эффекты при наведении на блок примера */
+    .prompt-example:hover {
+      border-color: inherit;
+      box-shadow: inherit;
+      transform: none;
+    }
+    
+    .prompt-example-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .example-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: 999px;
+    }
+    
+    .prompt-example-text {
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      font-family: inherit;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin-top: 16px;
+      border-left: none;
+      text-align: left;
+    }
+    
+    .prompt-copy-btn {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    
+    .prompt-copy-btn:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-1px);
+    }
+    
+    .prompt-copy-btn:active {
+      transform: scale(0.98);
+    }
+    
+    @media (max-width: 768px) { 
+      .page-title { font-size: 2.2rem; } 
+      .content-grid { grid-template-columns: 1fr; gap: 20px; } 
+      .btn-group { flex-direction: column; } 
+      .btn { width: 100%; justify-content: center; } 
+      .bot-container { padding: 20px; }
+      .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+      .pricing-card.popular { transform: none; }
+      .prompt-example {
+        margin: 20px 0;
+        padding: 20px;
+      }
+      .prompt-example-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .prompt-copy-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      /* Mobile: only bot-specific adjustments */
+    }
+  </style>
+  
+  <style>
+    .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;display:none}
+    .cookie-banner__inner{max-width:960px;margin:0 auto;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+    .cookie-banner__content{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .cookie-banner__text{font-size:14px;line-height:1.5;color:var(--muted)}
+    .cookie-banner__actions{display:flex;gap:8px}
+    .cookie-btn{appearance:none;border:1px solid var(--line);background:linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);color:#fff;border-radius:12px;padding:10px 14px;font-weight:600}
+    .cookie-btn--ghost{background:transparent;color:var(--text)}
+    @media (max-width: 640px){.cookie-banner__content{flex-direction:column;align-items:stretch}.cookie-banner__actions{width:100%}.cookie-btn{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="grid-overlay"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="noise"></div>
+  </div>
+  <button class="case-nav case-nav--prev" data-case-nav="prev" aria-label="Предыдущий слайд">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button class="case-nav case-nav--next" data-case-nav="next" aria-label="Следующий слайд">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="Loev Design">
+        <img src="../For site/01_logo/лого новый.svg" alt="Логотип" width="68" height="68" loading="eager" />
+      </a>
+      <nav class="nav" role="navigation" aria-label="Основная навигация">
+        <a href="#services">Цены и услуги</a>
+        <a href="#cases">Портфолио</a>
+        <a href="#about">Обо мне</a>
+        <a href="blog">Блог</a>
+      </nav>
+        <a href="#" class="btn btn--primary btn--contact" data-open-contact>Связаться</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="menu-toggle-label">Меню</span>
+      </button>
+    </div>
+  </header>
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-overlay"></div>
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <a class="logo" href="/" aria-label="Loev Design">
+          <img src="../For site/01_logo/лого новый.svg" alt="Логотип" width="60" height="60" loading="eager" />
+        </a>
+        <button class="mobile-nav-close" aria-label="Закрыть">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a class="mobile-nav-link" href="#services">Цены и услуги</a>
+        <a class="mobile-nav-link" href="#cases">Портфолио</a>
+        <a class="mobile-nav-link" href="#about">Обо мне</a>
+        <a class="mobile-nav-link" href="blog">Блог</a>
+        <a class="mobile-nav-link" href="#contact">Контакты</a>
+        <a class="mobile-nav-link mobile-nav-cta btn btn--primary" href="#contact" data-open-contact>Оставить заявку</a>
+        </div>
+    </div>
+  </div>
+
+  <div id="top"></div>
+  <!-- Main Content -->
+  <main id="main">
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">Loev SMM бот — генератор контент‑планов</h1>
+        <h2 class="page-subtitle">Создайте контент‑план на неделю с помощью ИИ для Instagram, VK и Telegram</h2>
+        
+      </div>
+
+      <div class="bot-container">
+        <form id="loev-bot-form">
+          <div class="form-group">
+            <label class="form-label" for="prompt">Опишите вашу задачу</label>
+            <textarea 
+              id="prompt" 
+              class="form-input"
+              placeholder="Введите ваш запрос..."
+              rows="4"
+            ></textarea>
+          </div>
+          
+          <div class="btn-group">
+            <button id="gen-btn" type="submit" class="btn btn-primary">
+              <span>🚀 Сгенерировать план</span>
+            </button>
+            <button id="clear-btn" type="button" class="btn btn-secondary">
+              <span>🗑️ Очистить</span>
+            </button>
+        </div>
+      </form>
+        
+      <div class="status" id="status" aria-live="polite"></div>
+        
+        <div class="hint">
+          <div class="hint-title">
+            💡 Как составить запрос
+          </div>
+          <div class="hint-content">
+            Опишите ваш бизнес, цели и предпочтения для получения качественного контент-плана
+          </div>
+          <ul class="hint-list">
+            <li><strong>Ниша:</strong> магазин эко‑свечей, студия дизайна, кофейня</li>
+            <li><strong>Цель:</strong> продажи, узнаваемость, лиды</li>
+            <li><strong>Тон:</strong> дружелюбный, экспертный, с юмором</li>
+            <li><strong>Каналы:</strong> Instagram, VK, Telegram, YouTube</li>
+            <li><strong>Аудитория:</strong> возраст, интересы, проблемы</li>
+          </ul>
+        </div>
+        
+        <!-- Пример идеального промта -->
+        <div class="prompt-example">
+          <div class="prompt-example-header">
+            <span class="example-label">💡 Пример запроса</span>
+            <button class="prompt-copy-btn" onclick="copyPromptExample()">📋 Скопировать</button>
+          </div>
+          <div class="prompt-example-text">Создай контент-план для студии дизайна и брендинга. Цель - привлечение клиентов и демонстрация экспертизы. Тон профессиональный, дружелюбный, с примерами работ. Каналы: Instagram, VK, Telegram. Аудитория - владельцы бизнеса 25-45 лет, которые ищут дизайнера. Показывай процесс работы, кейсы, советы по брендингу.</div>
+        </div>
+
+        <!-- Дисклеймер об ограничениях ИИ -->
+        <div class="status info" style="display:block; margin-top: -10px;">
+          Важно: нейросеть помогает ускорить работу, но не заменяет эксперта. Возможна часть неудачных или слабых предложений — проверяйте и дорабатывайте тексты под ваш бренд.
+        </div>
+      </div>
+
+      <div class="loading" id="loading">
+        <div class="loading-content">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Генерируем контент-план</div>
+          <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-grid" id="bot-cards"></div>
+      
+      <!-- Тарифные планы -->
+      <div class="pricing-section">
+        <div class="container">
+          <div class="pricing-header">
+            <h2 class="pricing-title">Персональный SMM с дизайнером</h2>
+            <p class="pricing-subtitle">Индивидуальная работа с профессиональным SMM-специалистом и дизайнером. Не автоматика, а живой эксперт создает контент специально для вашего бизнеса</p>
+          </div>
+          
+          <div class="pricing-grid">
+            <!-- Базовый план -->
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h3 class="pricing-card-title">Базовый</h3>
+                <p class="pricing-card-posts">10 постов в месяц</p>
+                <div class="pricing-card-price">5 000<span class="pricing-card-currency">₽</span></div>
+              </div>
+              
+              <ul class="pricing-card-features">
+                <li>10 уникальных постов</li>
+                <li>5 Stories</li>
+                <li>Контент-план на неделю</li>
+                <li>Советы для SMM</li>
+                <li>Визуальные идеи</li>
+                <li>Баннеры создаются вручную</li>
+                <li>Поддержка в Telegram</li>
+              </ul>
+              
+              <a href="https://t.me/Loev_design" class="pricing-card-cta secondary" target="_blank" rel="noopener">Выбрать план</a>
+            </div>
+            
+            <!-- Популярный план -->
+            <div class="pricing-card popular">
+              <div class="pricing-card-header">
+                <h3 class="pricing-card-title">Продвинутый</h3>
+                <p class="pricing-card-posts">15 постов в месяц</p>
+                <div class="pricing-card-price">10 000<span class="pricing-card-currency">₽</span></div>
+              </div>
+              
+              <ul class="pricing-card-features">
+                <li>15 уникальных постов</li>
+                <li>10 Stories</li>
+                <li>Контент-план на 2 недели</li>
+                <li>Расширенные советы</li>
+                <li>Детальные визуальные идеи</li>
+                <li>Баннеры создаются вручную</li>
+                <li>Приоритетная поддержка</li>
+                <li>Аналитика эффективности</li>
+                <li>Персональный менеджер</li>
+              </ul>
+              
+              <a href="https://t.me/Loev_design" class="pricing-card-cta" target="_blank" rel="noopener">Выбрать план</a>
+            </div>
+            
+            <!-- Премиум план -->
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h3 class="pricing-card-title">Премиум</h3>
+                <p class="pricing-card-posts">20 постов в месяц</p>
+                <div class="pricing-card-price">20 000<span class="pricing-card-currency">₽</span></div>
+              </div>
+              
+              <ul class="pricing-card-features">
+                <li>20 уникальных постов</li>
+                <li>15 Stories</li>
+                <li>Полный контент-план</li>
+                <li>Экспертные советы</li>
+                <li>Профессиональные визуалы</li>
+                <li>Баннеры создаются вручную</li>
+                <li>VIP поддержка 24/7</li>
+                <li>Полная аналитика</li>
+                <li>Персональный стратег</li>
+                <li>Консультации по SMM</li>
+                <li>Гарантия результата</li>
+              </ul>
+              
+              <a href="https://t.me/Loev_design" class="pricing-card-cta secondary" target="_blank" rel="noopener">Выбрать план</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="contact" class="section section--alt">
+    <div class="container">
+      <h2 class="section-title reveal">Контакты</h2>
+      <p class="section-lead reveal">Выберите удобный способ связи — отвечу быстро</p>
+      <div class="contact-links-grid reveal">
+        <!-- Удалено: неактуальная ссылка на Telegram @tinaindesign -->
+        <a href="tel:+79952247076" class="contact-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 013.4 4.09 2 2 0 015.11 2h3a2 2 0 012 1.72c.07.98.27 1.95.6 2.86a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.88.53 2.86.6A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Телефон</span>
+          <span class="contact-link-detail">+7 995 224‑70‑76</span>
+        </a>
+        <a href="mailto:loevstudio@gmail.com" class="contact-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="2"/></svg>
+          <span>Email</span>
+          <span class="contact-link-detail">loevstudio@gmail.com</span>
+        </a>
+        
+        <a href="https://wa.me/79952247076" target="_blank" rel="noopener" class="contact-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.18 1.6 6.01L0 24l6.11-1.6A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.24-6.21-3.48-8.52zM12 21.82c-1.88 0-3.72-.5-5.32-1.44l-.38-.22-3.63.95.97-3.54-.25-.41A9.83 9.83 0 012.18 12C2.18 6.6 6.6 2.18 12 2.18c2.61 0 5.06 1.02 6.9 2.86A9.75 9.75 0 0121.82 12c0 5.4-4.42 9.82-9.82 9.82zm5.68-7.41c-.31-.16-1.82-.9-2.1-1.01-.28-.1-.49-.16-.7.16-.2.31-.8 1-1 1.2-.18.2-.37.23-.68.08-.31-.16-1.31-.48-2.5-1.53-.92-.82-1.53-1.84-1.71-2.15-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.1-.21.05-.39-.02-.55-.08-.16-.7-1.69-.96-2.31-.25-.6-.51-.52-.7-.52l-.6-.01c-.2 0-.52.08-.8.39-.28.31-1.05 1.03-1.05 2.51 0 1.47 1.08 2.9 1.23 3.1.16.2 2.12 3.24 5.14 4.54.72.31 1.28.49 1.72.63.72.23 1.37.2 1.88.12.57-.08 1.82-.75 2.08-1.48.26-.73.26-1.36.18-1.49-.08-.13-.28-.2-.6-.36z" fill="currentColor"/></svg>
+          <span>WhatsApp</span>
+          <span class="contact-link-detail">Чат</span>
+        </a>
+        <a href="https://t.me/Loev_design" target="_blank" rel="noopener" class="contact-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22 2L2 9l6 2 1 6 4-3 5 3 4-15z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Telegram</span>
+          <span class="contact-link-detail">@Loev_design</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Согласие на использование файлов cookie">
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__content">
+        <div class="cookie-banner__text">Мы используем cookies для улучшения работы сайта и аналитики. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="#" style="color:var(--text);text-decoration:underline">политикой</a>.</div>
+        <div class="cookie-banner__actions">
+          <button class="cookie-btn" id="cookie-accept">Согласен</button>
+          <button class="cookie-btn cookie-btn--ghost" id="cookie-decline">Отказаться</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/loev-bot.js?v=4"></script>
+  <script>
+    // Функция копирования примера промта
+    function copyPromptExample() {
+      const exampleText = `Создай контент-план для студии дизайна и брендинга. Цель - привлечение клиентов и демонстрация экспертизы. Тон профессиональный, дружелюбный, с примерами работ. Каналы: Instagram, VK, Telegram. Аудитория - владельцы бизнеса 25-45 лет, которые ищут дизайнера. Показывай процесс работы, кейсы, советы по брендингу.`;
+      
+      navigator.clipboard.writeText(exampleText).then(function() {
+        const btn = document.querySelector('.prompt-copy-btn');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Скопировано!';
+        btn.style.background = '#22c55e';
+        btn.style.borderColor = '#22c55e';
+        btn.style.color = 'white';
+        
+        setTimeout(function() {
+          btn.textContent = originalText;
+          btn.style.background = 'transparent';
+          btn.style.borderColor = 'var(--accent)';
+          btn.style.color = 'var(--accent)';
+        }, 2000);
+      }).catch(function(err) {
+        console.error('Ошибка копирования: ', err);
+        alert('Не удалось скопировать. Попробуйте выделить текст вручную.');
+      });
+    }
+  </script>
+  <script>
+    // Mobile navigation
+    (function() {
+      var toggle = document.querySelector('.menu-toggle');
+      var drawer = document.getElementById('mobile-nav');
+      if(!toggle || !drawer) return;
+      var panel = drawer.querySelector('.mobile-nav-panel');
+      var overlay = drawer.querySelector('.mobile-nav-overlay');
+      var closeBtn = drawer.querySelector('.mobile-nav-close');
+      var previouslyFocused = null;
+      var untrap = null;
+      function open(){
+        previouslyFocused = document.activeElement;
+        drawer.classList.add('is-active');
+        document.body.classList.add('mobile-nav-open');
+        document.getElementById('main')?.setAttribute('aria-hidden','true');
+        toggle.setAttribute('aria-expanded','true');
+        untrap = trapFocus(drawer);
+        closeBtn?.focus();
+      }
+      function close(){
+        drawer.classList.remove('is-active');
+        document.body.classList.remove('mobile-nav-open');
+        document.getElementById('main')?.removeAttribute('aria-hidden');
+        toggle.setAttribute('aria-expanded','false');
+        if(typeof untrap==='function'){ try{ untrap(); }catch(e){} untrap=null; }
+        if(previouslyFocused && previouslyFocused.focus){ previouslyFocused.focus(); }
+      }
+      toggle.addEventListener('click', function(){ drawer.classList.contains('is-active') ? close() : open(); });
+      overlay?.addEventListener('click', close);
+      closeBtn?.addEventListener('click', close);
+      drawer.addEventListener('keydown', function(e){ if(e.key==='Escape'){ close(); } });
+      // Close on navigation click
+      drawer.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click', close); });
+    })();
+    // Focus trap utility for modals (copied from main.js)
+    function trapFocus(modal){
+      var focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])');
+      focusable = Array.prototype.slice.call(focusable);
+      if(!focusable.length) return function(){};
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      function onKey(e){
+        if(e.key !== 'Tab') return;
+        if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      }
+      modal.addEventListener('keydown', onKey);
+      return function untrap(){ modal.removeEventListener('keydown', onKey); };
+    }
+    // Cookie banner
+    (function(){
+      var key='cookie_consent_v1';
+      var banner=document.getElementById('cookie-banner');
+      var accepted=localStorage.getItem(key);
+      function hide(){banner.style.display='none'}
+      function show(){banner.style.display='block'}
+      if(!accepted){show()} else {hide()}
+      var acc=document.getElementById('cookie-accept');
+      var dec=document.getElementById('cookie-decline');
+      if(acc){acc.addEventListener('click',function(){localStorage.setItem(key,'accepted');hide()})}
+      if(dec){dec.addEventListener('click',function(){localStorage.setItem(key,'declined');hide()})}
+    })();
+  </script>
+</body>
+</html>

@@ -2595,7 +2595,7 @@ body.case-modal-open .case-nav { opacity: 1; pointer-events: auto; display: flex
 }
 
 .grid{display:grid; gap:16px}
-.services-grid{grid-template-columns:repeat(3,1fr)}
+.services-grid{grid-template-columns:repeat(3,1fr); align-items:start; justify-items:stretch; grid-auto-rows:202px; grid-auto-flow:dense}
 .features-grid{grid-template-columns:repeat(3,1fr)}
 @media (max-width: 900px){
   .services-grid{grid-template-columns:repeat(2,1fr)}
@@ -2605,6 +2605,33 @@ body.case-modal-open .case-nav { opacity: 1; pointer-events: auto; display: flex
   .services-grid{grid-template-columns:1fr}
   .features-grid{grid-template-columns:1fr}
 }
+.service.service--mini{display:block; padding:12px 14px; min-height:0}
+.service.service--mini .service-header{display:none}
+.service.service--mini .service-content{display:block; padding:0; margin:0}
+.service.service--mini .service-cover{display:block; width:100%; aspect-ratio:16 / 5 !important; border-radius:16px; overflow:hidden; background:var(--card)}
+.service.service--mini .service-cover img{display:block; width:100%; height:100%; object-fit:cover}
+
+/* Exact sizing for 6th service card in services grid */
+#services .services-grid > .service:nth-child(6){
+  padding:12px 14px; align-self:start; justify-self:stretch;
+}
+#services .services-grid > .service:nth-child(6) .service-content{padding:0; margin:0}
+#services .services-grid > .service:nth-child(6) .service-cover{width:100%; height:100%; aspect-ratio:auto; border-radius:16px; overflow:hidden}
+
+/* Exact sizing for 7th service card just below the 6th */
+#services .services-grid > .service:nth-child(7){
+  padding:12px 14px; align-self:start; justify-self:stretch;
+}
+#services .services-grid > .service:nth-child(7) .service-content{padding:0; margin:0}
+#services .services-grid > .service:nth-child(7) .service-cover{width:100%; height:100%; aspect-ratio:auto; border-radius:16px; overflow:hidden}
+
+/* Make normal services span two rows; mini spans one, so two minis stack */
+.services-grid > .service:not(.service--mini){grid-row:span 2}
+.services-grid > .service.service--mini{grid-row:span 1}
+
+/* Lower headers and price in standard service cards a bit */
+.service.service-clickable .service-header{margin-top:10px}
+.service.service-clickable .service-header h3{margin-top:6px}
 .card{
   background: var(--card); 
   border: 1px solid var(--line); 
