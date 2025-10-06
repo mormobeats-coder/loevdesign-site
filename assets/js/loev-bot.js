@@ -64,22 +64,43 @@
 
     function escapeHtml(s){ if(typeof s!=='string') return s; return s.replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]);}); }
     function loadSnippets(){ return fetch('../assets/data/post_examples.json',{cache:'no-store'}).then(function(r){return r.json();}).catch(function(){return null;}); }
-    function pickSnippets(data, prompt){ if(!data||!data.niches) return ''; var p=(prompt||'').toLowerCase(); var key='студия дизайна'; if(p.indexOf('кофе')>=0||p.indexOf('кофей')>=0) key='кофейня'; if(p.indexOf('банк')>=0||p.indexOf('финанс')>=0) key='банк'; var arr=data.niches[key]||[]; return arr.slice(0,2).map(function(x){return JSON.stringify(x);}).join('\n'); }
-    function buildPrompt(userPrompt, snippets){ return 'Ты пишешь посты для бизнеса. Тон: профессиональный, дружелюбный.\nОбязательные требования:\n- Размер поста: 1000–1500 знаков, живой и полезный, без воды.\n- Структура мысли: введение → основная часть → вывод → CTA.\n- Избегай канцелярита; пиши для людей.\n- Ответ строго JSON. Поля: structured{title,annotation,intro,body[],outro,cta}, post (string) — цельный готовый текст без каких-либо ключей и скобок.\nКонтекст (эталоны JSON):\n'+(snippets||'')+'\n\nДанные задачи: '+userPrompt+'\n\nВерни JSON с полями structured и post. Никаких пояснений вне JSON.'; }
 
-    function composeFromStructured(obj){
-      if(!obj || typeof obj!=='object') return '';
-      var parts = [];
-      if(obj.title){ parts.push((obj.title||'').toString().trim()); }
-      if(obj.annotation){ parts.push((obj.annotation||'').toString().trim()); }
-      if(obj.intro){ parts.push((obj.intro||'').toString().trim()); }
-      if(Array.isArray(obj.body) && obj.body.length){
-        parts.push(obj.body.map(function(p){ return p && p.toString ? p.toString().trim() : ''; }).filter(Boolean).join('\n\n'));
-      }
-      if(obj.outro){ parts.push((obj.outro||'').toString().trim()); }
-      if(obj.cta){ parts.push((obj.cta||'').toString().trim()); }
-      return parts.filter(Boolean).join('\n\n');
+    function detectNiche(prompt){
+      var p=(prompt||'').toLowerCase();
+      if(p.indexOf('кофе')>=0||p.indexOf('кофей')>=0||p.indexOf('coffee')>=0) return 'кофейня';
+      if(p.indexOf('банк')>=0||p.indexOf('финанс')>=0) return 'банк';
+      if(p.indexOf('секонд')>=0||p.indexOf('second')>=0) return 'секонд‑хенд';
+      if(p.indexOf('шоу')>=0||p.indexOf('showroom')>=0||p.indexOf('шоурум')>=0) return 'шоурум';
+      if(p.indexOf('дизайн')>=0||p.indexOf('бренд')>=0) return 'студия дизайна';
+      return null;
     }
+
+    function pickSnippets(data, prompt){ var key=detectNiche(prompt); var arr=(key && data && data.niches && data.niches[key])? data.niches[key] : []; return arr.slice(0,2).map(function(x){return JSON.stringify(x);}).join('\n'); }
+
+    function buildPrompt(userPrompt, snippets){
+      var niche=detectNiche(userPrompt)||'указанная ниша';
+      var exemplarsHeader='ЭТАЛОНЫ (для ориентира по стилю/плотности, не копируй):\n';
+      var rules=[
+        'НИША: '+niche+'. Строго пишем только про эту нишу.',
+        'Если ниша не «студия дизайна», запрещено упоминать «студию дизайна», «дизайн-студию» и аналогичные формулировки.',
+        'Заголовок явно отражает нишу: включи слово «'+niche+'».',
+        '1000–1200 знаков. Живой, практичный текст без воды.',
+        'Структура: введение → основная часть → вывод → CTA.',
+        'Запрет: FAQ-списки, общие «советы по визуалу», пустые вопросы без ответов.',
+        'Без кейсов/компаний; только общие принципы, год — 2025.'
+      ].join('\n- ');
+      return (
+        'Ты пишешь посты для бизнеса. Тон: профессиональный, дружелюбный.\n' +
+        '- ' + rules + '\n\n' +
+        exemplarsHeader + (snippets||'') + '\n\n' +
+        'Ответ строго JSON. Поля: structured{title,annotation,intro,body[],outro,cta}, post (string) — цельный готовый текст без ключей и пометок.\n' +
+        'Верни JSON с полями structured и post без пояснений вне JSON.'
+      );
+    }
+
+    function composeFromStructured(obj){ if(!obj||typeof obj!=='object') return ''; var parts=[]; if(obj.title){ parts.push((obj.title||'').toString().trim()); } if(obj.annotation){ parts.push((obj.annotation||'').toString().trim()); } if(obj.intro){ parts.push((obj.intro||'').toString().trim()); } if(Array.isArray(obj.body)&&obj.body.length){ parts.push(obj.body.map(function(p){ return p&&p.toString?p.toString().trim():''; }).filter(Boolean).join('\n\n')); } if(obj.outro){ parts.push((obj.outro||'').toString().trim()); } if(obj.cta){ parts.push((obj.cta||'').toString().trim()); } return parts.filter(Boolean).join('\n\n'); }
+
+    function looksLikeStructuredString(s){ if(typeof s!=='string') return false; return /\{\s*"(title|intro|annotation|body|outro|cta)"/i.test(s); }
 
     function renderCards(plan){
       if(!cardsHost) return;
@@ -145,11 +166,19 @@
           '<div class="card-content">';
           
         if(structured && typeof structured === 'object'){
-          cardHTML += '<div class="post-text">'+ escapeHtml(composeFromStructured(structured)) + '</div>';
+          cardHTML += '<div class="post-text">'+ escapeHtml(composeFromStructured(structured)) +'</div>';
         } else {
           cardHTML += '<div class="post-text"></div>';
         }
         cardHTML += '</div>';
+        
+        // Убираем блок с визуальными идеями
+        // if(visual) {
+        //   cardHTML += '<div class="visual-section">'+
+        //     '<div class="visual-label">🎨 Дизайн баннера</div>'+
+        //     '<div class="visual-text">'+visual+'</div>'+
+        //   '</div>';
+        // }
         
         if(tips) {
           cardHTML += '<div class="tips-section">'+
@@ -168,11 +197,20 @@
         // Устанавливаем текст поста
         var textEl = card.querySelector('.post-text');
         if(textEl && !structured){
-          if(typeof post === 'object' && post){
-            textEl.textContent = composeFromStructured(post);
+          var finalText='';
+          if(typeof post==='object' && post){
+            finalText=composeFromStructured(post);
+          } else if(looksLikeStructuredString(post)){
+            try{
+              var parsed=JSON.parse(post);
+              finalText=composeFromStructured(parsed);
+            }catch(_){
+              finalText=(post||'').toString();
+            }
           } else {
-            textEl.textContent = (typeof post === 'string') ? post : '';
+            finalText=(typeof post==='string')?post:'';
           }
+          textEl.textContent=finalText;
         }
         
         // Обработчик копирования с замыканием
