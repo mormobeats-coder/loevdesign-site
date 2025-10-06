@@ -993,7 +993,7 @@
   </div>
 
   <script src="../assets/js/main.js"></script>
-  <script src="../assets/js/loev-bot.js?v=4"></script>
+  <script src="../assets/js/loev-bot.js?v=5"></script>
   <script>
     // Функция копирования примера промта
     function copyPromptExample() {
@@ -1081,6 +1081,23 @@
       var dec=document.getElementById('cookie-decline');
       if(acc){acc.addEventListener('click',function(){localStorage.setItem(key,'accepted');hide()})}
       if(dec){dec.addEventListener('click',function(){localStorage.setItem(key,'declined');hide()})}
+    })();
+  </script>
+  <script>
+    // Fallback init for mobile burger specific to this page (idempotent)
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var drawer = document.getElementById('mobile-nav');
+      if(!toggle || !drawer) return;
+      if(toggle.__loevBurgerBound) return; // avoid double-binding
+      toggle.__loevBurgerBound = true;
+      var overlay = drawer.querySelector('.mobile-nav-overlay');
+      var closeBtn = drawer.querySelector('.mobile-nav-close');
+      function open(){ drawer.classList.add('is-active'); document.body.classList.add('mobile-nav-open'); toggle.setAttribute('aria-expanded','true'); }
+      function close(){ drawer.classList.remove('is-active'); document.body.classList.remove('mobile-nav-open'); toggle.setAttribute('aria-expanded','false'); }
+      toggle.addEventListener('click', function(e){ e.preventDefault(); drawer.classList.contains('is-active') ? close() : open(); });
+      overlay && overlay.addEventListener('click', close);
+      closeBtn && closeBtn.addEventListener('click', close);
     })();
   </script>
 </body>

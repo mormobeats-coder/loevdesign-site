@@ -65,7 +65,21 @@
     function escapeHtml(s){ if(typeof s!=='string') return s; return s.replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]);}); }
     function loadSnippets(){ return fetch('../assets/data/post_examples.json',{cache:'no-store'}).then(function(r){return r.json();}).catch(function(){return null;}); }
     function pickSnippets(data, prompt){ if(!data||!data.niches) return ''; var p=(prompt||'').toLowerCase(); var key='студия дизайна'; if(p.indexOf('кофе')>=0||p.indexOf('кофей')>=0) key='кофейня'; if(p.indexOf('банк')>=0||p.indexOf('финанс')>=0) key='банк'; var arr=data.niches[key]||[]; return arr.slice(0,2).map(function(x){return JSON.stringify(x);}).join('\n'); }
-    function buildPrompt(userPrompt, snippets){ return 'Ты пишешь посты для бизнеса. Тон: профессиональный, дружелюбный. Структура вывода — строгий JSON с ключами: title, annotation, intro, body (array of strings), outro, cta.\nПравила: конкретика, без воды; body — практические пункты; избегай канцелярита.\nКонтекст (эталоны JSON):\n'+(snippets||'')+'\n\nДанные задачи: '+userPrompt+'\n\nОтвет строго JSON без пояснений.'; }
+    function buildPrompt(userPrompt, snippets){ return 'Ты пишешь посты для бизнеса. Тон: профессиональный, дружелюбный.\nОбязательные требования:\n- Размер поста: 1000–1500 знаков, живой и полезный, без воды.\n- Структура мысли: введение → основная часть → вывод → CTA.\n- Избегай канцелярита; пиши для людей.\n- Ответ строго JSON. Поля: structured{title,annotation,intro,body[],outro,cta}, post (string) — цельный готовый текст без каких-либо ключей и скобок.\nКонтекст (эталоны JSON):\n'+(snippets||'')+'\n\nДанные задачи: '+userPrompt+'\n\nВерни JSON с полями structured и post. Никаких пояснений вне JSON.'; }
+
+    function composeFromStructured(obj){
+      if(!obj || typeof obj!=='object') return '';
+      var parts = [];
+      if(obj.title){ parts.push((obj.title||'').toString().trim()); }
+      if(obj.annotation){ parts.push((obj.annotation||'').toString().trim()); }
+      if(obj.intro){ parts.push((obj.intro||'').toString().trim()); }
+      if(Array.isArray(obj.body) && obj.body.length){
+        parts.push(obj.body.map(function(p){ return p && p.toString ? p.toString().trim() : ''; }).filter(Boolean).join('\n\n'));
+      }
+      if(obj.outro){ parts.push((obj.outro||'').toString().trim()); }
+      if(obj.cta){ parts.push((obj.cta||'').toString().trim()); }
+      return parts.filter(Boolean).join('\n\n');
+    }
 
     function renderCards(plan){
       if(!cardsHost) return;
@@ -114,7 +128,10 @@
           }
         }
         
-        console.log('Day', i+1, ':', {day, topic, format, post: post.substring(0, 50) + '...'});
+        // Безопасное превью для логов
+        var previewSrc = (typeof post === 'string') ? post : JSON.stringify(post||'');
+        var preview = (previewSrc || '').toString().substring(0, 50) + '...';
+        console.log('Day', i+1, ':', {day: day, topic: topic, format: format, post: preview});
 
         var card = document.createElement('div');
         card.className = 'content-card';
@@ -128,19 +145,11 @@
           '<div class="card-content">';
           
         if(structured && typeof structured === 'object'){
-          cardHTML += '<div class="post-text">'+ (structured.title?('<strong>'+escapeHtml(structured.title)+'</strong> — '):'') + escapeHtml(structured.annotation||'') + '\n\n' + escapeHtml(structured.intro||'') + '\n\n' + (Array.isArray(structured.body)?structured.body.map(function(p){return '• '+escapeHtml(p);}).join('\n'):'') + '\n\n' + escapeHtml(structured.outro||'') + (structured.cta? ('\n\n'+escapeHtml(structured.cta)) : '') + '</div>';
+          cardHTML += '<div class="post-text">'+ escapeHtml(composeFromStructured(structured)) + '</div>';
         } else {
           cardHTML += '<div class="post-text"></div>';
         }
         cardHTML += '</div>';
-        
-        // Убираем блок с визуальными идеями
-        // if(visual) {
-        //   cardHTML += '<div class="visual-section">'+
-        //     '<div class="visual-label">🎨 Дизайн баннера</div>'+
-        //     '<div class="visual-text">'+visual+'</div>'+
-        //   '</div>';
-        // }
         
         if(tips) {
           cardHTML += '<div class="tips-section">'+
@@ -159,13 +168,16 @@
         // Устанавливаем текст поста
         var textEl = card.querySelector('.post-text');
         if(textEl && !structured){
-          textEl.textContent = (post||'').toString();
+          if(typeof post === 'object' && post){
+            textEl.textContent = composeFromStructured(post);
+          } else {
+            textEl.textContent = (typeof post === 'string') ? post : '';
+          }
         }
         
         // Обработчик копирования с замыканием
         var copyBtn = card.querySelector('[data-copy]');
         if(copyBtn) {
-          // Создаем замыкание для каждого обработчика
           (function(buttonElement, textElement) {
             buttonElement.addEventListener('click', function(){
               var textToCopy = textElement ? textElement.textContent : '';
